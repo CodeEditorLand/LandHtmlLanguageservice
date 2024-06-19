@@ -15,22 +15,22 @@
     "url": "https://github.com/Microsoft/vscode-html-languageservice"
   },
   "devDependencies": {
-    "@types/mocha": "10.0.6",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "7.13.1",
-    "@typescript-eslint/parser": "7.13.1",
-    "@vscode/web-custom-data": "0.4.9",
-    "eslint": "9.5.0",
-    "js-beautify": "1.15.1",
-    "mocha": "10.4.0",
-    "rimraf": "5.0.7",
-    "typescript": "5.4.5"
+    "@types/mocha": "^10.0.6",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/web-custom-data": "^0.4.9",
+    "eslint": "^8.57.0",
+    "js-beautify": "^1.15.1",
+    "mocha": "^10.3.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@vscode/l10n": "0.0.18",
-    "vscode-languageserver-textdocument": "1.0.11",
-    "vscode-languageserver-types": "3.17.5",
-    "vscode-uri": "3.0.8"
+    "@vscode/l10n": "^0.0.18",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "vscode-languageserver-types": "^3.17.5",
+    "vscode-uri": "^3.0.8"
   },
   "scripts": {
     "prepack": "npm run clean && npm run compile-esm && npm run test && npm run remove-sourcemap-refs",
