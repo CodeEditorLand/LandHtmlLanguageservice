@@ -19,7 +19,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "18.x",
-		"js-beautify": "^1.15.1",
-		"rimraf": "^5.0.7"
+		"js-beautify": "1.15.1",
+		"rimraf": "5.0.7"
 	}
 }
