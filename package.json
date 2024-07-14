@@ -1,9 +1,14 @@
 {
-	"name": "vscode-html-languageservice",
+	"dependencies": {},
 	"description": "Language service for HTML",
+	"devDependencies": {
+		"@types/node": "18.x",
+		"js-beautify": "^1.15.1",
+		"rimraf": "^5.0.7"
+	},
 	"main": "./lib/umd/htmlLanguageService.js",
 	"module": "./lib/esm/htmlLanguageService.js",
-	"typings": "./lib/umd/htmlLanguageService",
+	"name": "vscode-html-languageservice",
 	"scripts": {
 		"clean": "rimraf lib",
 		"compile": "tsc -p ./src && npm run copy-jsbeautify",
@@ -16,10 +21,5 @@
 		"update-jsbeautify": "npm i js-beautify && node ./build/update-jsbeautify.js",
 		"update-jsbeautify-next": "npm i js-beautify@next && node ./build/update-jsbeautify.js"
 	},
-	"dependencies": {},
-	"devDependencies": {
-		"@types/node": "18.x",
-		"js-beautify": "^1.15.1",
-		"rimraf": "^5.0.7"
-	}
+	"typings": "./lib/umd/htmlLanguageService"
 }
