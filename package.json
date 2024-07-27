@@ -2,9 +2,9 @@
 	"dependencies": {},
 	"description": "Language service for HTML",
 	"devDependencies": {
-		"@types/node": "18.x",
-		"js-beautify": "^1.15.1",
-		"rimraf": "^5.0.7"
+		"@types/node": "18.0",
+		"js-beautify": "1.15.1",
+		"rimraf": "5.0.7"
 	},
 	"main": "./lib/umd/htmlLanguageService.js",
 	"module": "./lib/esm/htmlLanguageService.js",
