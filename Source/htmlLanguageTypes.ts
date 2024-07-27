@@ -4,28 +4,79 @@
  *--------------------------------------------------------------------------------------------*/
 
 import {
-	Position, Range, Location,
-	MarkupContent, MarkupKind, MarkedString, DocumentUri,
-	SelectionRange, WorkspaceEdit,
-	CompletionList, CompletionItemKind, CompletionItem, CompletionItemTag, InsertTextMode, Command,
-	SymbolInformation, DocumentSymbol, SymbolKind,
-	Hover, TextEdit, InsertReplaceEdit, InsertTextFormat, DocumentHighlight, DocumentHighlightKind,
-	DocumentLink, FoldingRange, FoldingRangeKind,
-	SignatureHelp, Definition, Diagnostic, FormattingOptions, Color, ColorInformation, ColorPresentation
-} from 'vscode-languageserver-types';
-import { TextDocument } from 'vscode-languageserver-textdocument';
-
+	Position,
+	Range,
+	Location,
+	MarkupContent,
+	MarkupKind,
+	MarkedString,
+	DocumentUri,
+	SelectionRange,
+	WorkspaceEdit,
+	CompletionList,
+	CompletionItemKind,
+	CompletionItem,
+	CompletionItemTag,
+	InsertTextMode,
+	Command,
+	SymbolInformation,
+	DocumentSymbol,
+	SymbolKind,
+	Hover,
+	TextEdit,
+	InsertReplaceEdit,
+	InsertTextFormat,
+	DocumentHighlight,
+	DocumentHighlightKind,
+	DocumentLink,
+	FoldingRange,
+	FoldingRangeKind,
+	SignatureHelp,
+	Definition,
+	Diagnostic,
+	FormattingOptions,
+	Color,
+	ColorInformation,
+	ColorPresentation,
+} from "vscode-languageserver-types";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 export {
 	TextDocument,
-	Position, Range, Location,
-	MarkupContent, MarkupKind, MarkedString, DocumentUri,
-	SelectionRange, WorkspaceEdit,
-	CompletionList, CompletionItemKind, CompletionItem, CompletionItemTag, InsertTextMode, Command,
-	SymbolInformation, DocumentSymbol, SymbolKind,
-	Hover, TextEdit, InsertReplaceEdit, InsertTextFormat, DocumentHighlight, DocumentHighlightKind,
-	DocumentLink, FoldingRange, FoldingRangeKind,
-	SignatureHelp, Definition, Diagnostic, FormattingOptions, Color, ColorInformation, ColorPresentation
+	Position,
+	Range,
+	Location,
+	MarkupContent,
+	MarkupKind,
+	MarkedString,
+	DocumentUri,
+	SelectionRange,
+	WorkspaceEdit,
+	CompletionList,
+	CompletionItemKind,
+	CompletionItem,
+	CompletionItemTag,
+	InsertTextMode,
+	Command,
+	SymbolInformation,
+	DocumentSymbol,
+	SymbolKind,
+	Hover,
+	TextEdit,
+	InsertReplaceEdit,
+	InsertTextFormat,
+	DocumentHighlight,
+	DocumentHighlightKind,
+	DocumentLink,
+	FoldingRange,
+	FoldingRangeKind,
+	SignatureHelp,
+	Definition,
+	Diagnostic,
+	FormattingOptions,
+	Color,
+	ColorInformation,
+	ColorPresentation,
 };
 
 export interface HTMLFormatConfiguration {
@@ -36,28 +87,45 @@ export interface HTMLFormatConfiguration {
 	unformatted?: string;
 	contentUnformatted?: string;
 	indentInnerHtml?: boolean;
-	wrapAttributes?: 'auto' | 'force' | 'force-aligned' | 'force-expand-multiline' | 'aligned-multiple' | 'preserve' | 'preserve-aligned';
+	wrapAttributes?:
+		| "auto"
+		| "force"
+		| "force-aligned"
+		| "force-expand-multiline"
+		| "aligned-multiple"
+		| "preserve"
+		| "preserve-aligned";
 	wrapAttributesIndentSize?: number;
 	preserveNewLines?: boolean;
 	maxPreserveNewLines?: number;
 	indentHandlebars?: boolean;
 	endWithNewline?: boolean;
 	extraLiners?: string;
-	indentScripts?: 'keep' | 'separate' | 'normal';
-	templating?: ('auto' | 'none' | 'angular' | 'django' | 'erb' | 'handlebars' | 'php' | 'smarty')[] | boolean;
+	indentScripts?: "keep" | "separate" | "normal";
+	templating?:
+		| (
+				| "auto"
+				| "none"
+				| "angular"
+				| "django"
+				| "erb"
+				| "handlebars"
+				| "php"
+				| "smarty"
+		  )[]
+		| boolean;
 	unformattedContentDelimiter?: string;
-
 }
 
 export interface HoverSettings {
 	documentation?: boolean;
-	references?: boolean
+	references?: boolean;
 }
 
 export interface CompletionConfiguration {
 	[provider: string]: boolean | undefined | string;
 	hideAutoCompleteProposals?: boolean;
-	attributeDefaultValue?: 'empty' | 'singlequotes' | 'doublequotes';
+	attributeDefaultValue?: "empty" | "singlequotes" | "doublequotes";
 }
 
 export interface Node {
@@ -93,7 +161,7 @@ export enum TokenType {
 	Unknown,
 	Script,
 	Styles,
-	EOS
+	EOS,
 }
 
 export enum ScannerState {
@@ -107,7 +175,7 @@ export enum ScannerState {
 	WithinScriptContent,
 	WithinStyleContent,
 	AfterAttributeName,
-	BeforeAttributeValue
+	BeforeAttributeValue,
 }
 
 export interface Scanner {
@@ -160,7 +228,7 @@ export interface ITagData {
 	description?: string | MarkupContent;
 	attributes: IAttributeData[];
 	references?: IReference[];
-	void?: boolean
+	void?: boolean;
 }
 
 export interface IAttributeData {
@@ -221,7 +289,6 @@ export interface ClientCapabilities {
 				 */
 				documentationFormat?: MarkupKind[];
 			};
-
 		};
 		/**
 		 * Capabilities specific to hovers.
@@ -241,19 +308,22 @@ export namespace ClientCapabilities {
 		textDocument: {
 			completion: {
 				completionItem: {
-					documentationFormat: [MarkupKind.Markdown, MarkupKind.PlainText]
-				}
+					documentationFormat: [
+						MarkupKind.Markdown,
+						MarkupKind.PlainText,
+					],
+				},
 			},
 			hover: {
-				contentFormat: [MarkupKind.Markdown, MarkupKind.PlainText]
-			}
-		}
+				contentFormat: [MarkupKind.Markdown, MarkupKind.PlainText],
+			},
+		},
 	};
 }
 
 export interface LanguageServiceOptions {
 	/**
-	 * Unless set to false, the default HTML data provider will be used 
+	 * Unless set to false, the default HTML data provider will be used
 	 * along with the providers from customDataProviders.
 	 * Defaults to true.
 	 */
@@ -293,7 +363,7 @@ export enum FileType {
 	/**
 	 * A symbolic link to a file.
 	 */
-	SymbolicLink = 64
+	SymbolicLink = 64,
 }
 
 export interface FileStat {
