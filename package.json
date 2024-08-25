@@ -2,7 +2,7 @@
 	"dependencies": {},
 	"description": "Language service for HTML",
 	"devDependencies": {
-		"@types/node": "22.4",
+		"@types/node": "22.5",
 		"js-beautify": "1.15.1",
 		"rimraf": "6.0.1"
 	},
