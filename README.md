@@ -28,7 +28,7 @@ editing experience of Visual Studio Code and the Monaco editor.
 For the complete API see [htmlLanguageService.ts](./src/htmlLanguageService.ts)
 and [htmlLanguageTypes.ts](./src/htmlLanguageTypes.ts)
 
-## Installation
+## 🚀 Installation
 
     npm install --save vscode-html-languageservice
 
