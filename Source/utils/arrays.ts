@@ -9,7 +9,8 @@
  * @returns the least x for which p(x) is true or array.length if no element fullfills the given function.
  */
 export function findFirst<T>(array: T[], p: (x: T) => boolean): number {
-	let low = 0, high = array.length;
+	let low = 0,
+		high = array.length;
 	if (high === 0) {
 		return 0; // no children
 	}
@@ -24,7 +25,11 @@ export function findFirst<T>(array: T[], p: (x: T) => boolean): number {
 	return low;
 }
 
-export function binarySearch<T>(array: T[], key: T, comparator: (op1: T, op2: T) => number): number {
+export function binarySearch<T>(
+	array: T[],
+	key: T,
+	comparator: (op1: T, op2: T) => number,
+): number {
 	let low = 0,
 		high = array.length - 1;
 

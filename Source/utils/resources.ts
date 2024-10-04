@@ -3,22 +3,22 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { URI } from 'vscode-uri';
+import { URI } from "vscode-uri";
 
-const Slash = '/'.charCodeAt(0);
-const Dot = '.'.charCodeAt(0);
+const Slash = "/".charCodeAt(0);
+const Dot = ".".charCodeAt(0);
 
 export function isAbsolutePath(path: string) {
 	return path.charCodeAt(0) === Slash;
 }
 
 export function dirname(uri: string) {
-	const lastIndexOfSlash = uri.lastIndexOf('/');
-	return lastIndexOfSlash !== -1 ? uri.substr(0, lastIndexOfSlash) : '';
+	const lastIndexOfSlash = uri.lastIndexOf("/");
+	return lastIndexOfSlash !== -1 ? uri.substr(0, lastIndexOfSlash) : "";
 }
 
 export function basename(uri: string) {
-	const lastIndexOfSlash = uri.lastIndexOf('/');
+	const lastIndexOfSlash = uri.lastIndexOf("/");
 	return uri.substr(lastIndexOfSlash + 1);
 }
 
@@ -35,13 +35,13 @@ export function extname(uri: string) {
 			break;
 		}
 	}
-	return '';
+	return "";
 }
 
 export function resolvePath(uriString: string, path: string): string {
 	if (isAbsolutePath(path)) {
 		const uri = URI.parse(uriString);
-		const parts = path.split('/');
+		const parts = path.split("/");
 		return uri.with({ path: normalizePath(parts) }).toString();
 	}
 	return joinPath(uriString, path);
@@ -50,29 +50,36 @@ export function resolvePath(uriString: string, path: string): string {
 export function normalizePath(parts: string[]): string {
 	const newParts: string[] = [];
 	for (const part of parts) {
-		if (part.length === 0 || part.length === 1 && part.charCodeAt(0) === Dot) {
+		if (
+			part.length === 0 ||
+			(part.length === 1 && part.charCodeAt(0) === Dot)
+		) {
 			// ignore
-		} else if (part.length === 2 && part.charCodeAt(0) === Dot && part.charCodeAt(1) === Dot) {
+		} else if (
+			part.length === 2 &&
+			part.charCodeAt(0) === Dot &&
+			part.charCodeAt(1) === Dot
+		) {
 			newParts.pop();
 		} else {
 			newParts.push(part);
 		}
 	}
 	if (parts.length > 1 && parts[parts.length - 1].length === 0) {
-		newParts.push('');
+		newParts.push("");
 	}
-	let res = newParts.join('/');
+	let res = newParts.join("/");
 	if (parts[0].length === 0) {
-		res = '/' + res;
+		res = "/" + res;
 	}
 	return res;
 }
 
 export function joinPath(uriString: string, ...paths: string[]): string {
 	const uri = URI.parse(uriString);
-	const parts = uri.path.split('/');
+	const parts = uri.path.split("/");
 	for (let path of paths) {
-		parts.push(...path.split('/'));
+		parts.push(...path.split("/"));
 	}
 	return uri.with({ path: normalizePath(parts) }).toString();
 }

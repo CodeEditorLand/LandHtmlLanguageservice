@@ -3,13 +3,17 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { TokenType, FoldingRange, FoldingRangeKind, TextDocument } from '../htmlLanguageTypes';
-import { createScanner } from '../parser/htmlScanner';
-import { HTMLDataManager } from '../languageFacts/dataManager';
+import {
+	FoldingRange,
+	FoldingRangeKind,
+	TextDocument,
+	TokenType,
+} from "../htmlLanguageTypes";
+import { HTMLDataManager } from "../languageFacts/dataManager";
+import { createScanner } from "../parser/htmlScanner";
 
 export class HTMLFolding {
-	constructor(private dataManager: HTMLDataManager) {
-	}
+	constructor(private dataManager: HTMLDataManager) {}
 	private limitRanges(ranges: FoldingRange[], rangeLimit: number) {
 		ranges = ranges.sort((r1, r2) => {
 			let diff = r1.startLine - r2.startLine;
@@ -29,7 +33,8 @@ export class HTMLFolding {
 		const setNestingLevel = (index: number, level: number) => {
 			nestingLevels[index] = level;
 			if (level < 30) {
-				nestingLevelCounts[level] = (nestingLevelCounts[level] || 0) + 1;
+				nestingLevelCounts[level] =
+					(nestingLevelCounts[level] || 0) + 1;
 			}
 		};
 
@@ -74,8 +79,11 @@ export class HTMLFolding {
 		const result = [];
 		for (let i = 0; i < ranges.length; i++) {
 			const level = nestingLevels[i];
-			if (typeof level === 'number') {
-				if (level < maxLevel || (level === maxLevel && entries++ < rangeLimit)) {
+			if (typeof level === "number") {
+				if (
+					level < maxLevel ||
+					(level === maxLevel && entries++ < rangeLimit)
+				) {
 					result.push(ranges[i]);
 				}
 			}
@@ -83,11 +91,14 @@ export class HTMLFolding {
 		return result;
 	}
 
-	public getFoldingRanges(document: TextDocument, context: { rangeLimit?: number } | undefined): FoldingRange[] {
+	public getFoldingRanges(
+		document: TextDocument,
+		context: { rangeLimit?: number } | undefined,
+	): FoldingRange[] {
 		const scanner = createScanner(document.getText());
 		let token = scanner.scan();
 		const ranges: FoldingRange[] = [];
-		const stack: { startLine: number, tagName: string }[] = [];
+		const stack: { startLine: number; tagName: string }[] = [];
 		let lastTagName = null;
 		let prevStart = -1;
 		let voidElements: string[] | undefined;
@@ -101,7 +112,9 @@ export class HTMLFolding {
 			switch (token) {
 				case TokenType.StartTag: {
 					const tagName = scanner.getTokenText();
-					const startLine = document.positionAt(scanner.getTokenOffset()).line;
+					const startLine = document.positionAt(
+						scanner.getTokenOffset(),
+					).line;
 					stack.push({ startLine, tagName });
 					lastTagName = tagName;
 					break;
@@ -114,8 +127,15 @@ export class HTMLFolding {
 					if (!lastTagName) {
 						break;
 					}
-					voidElements ??= this.dataManager.getVoidElements(document.languageId);
-					if (!this.dataManager.isVoidElement(lastTagName, voidElements)) {
+					voidElements ??= this.dataManager.getVoidElements(
+						document.languageId,
+					);
+					if (
+						!this.dataManager.isVoidElement(
+							lastTagName,
+							voidElements,
+						)
+					) {
 						break;
 					}
 				// fallthrough
@@ -128,7 +148,9 @@ export class HTMLFolding {
 					if (i >= 0) {
 						const stackElement = stack[i];
 						stack.length = i;
-						const line = document.positionAt(scanner.getTokenOffset()).line;
+						const line = document.positionAt(
+							scanner.getTokenOffset(),
+						).line;
 						const startLine = stackElement.startLine;
 						const endLine = line - 1;
 						if (endLine > startLine && prevStart !== startLine) {
@@ -138,12 +160,15 @@ export class HTMLFolding {
 					break;
 				}
 				case TokenType.Comment: {
-					let startLine = document.positionAt(scanner.getTokenOffset()).line;
+					let startLine = document.positionAt(
+						scanner.getTokenOffset(),
+					).line;
 					const text = scanner.getTokenText();
 					const m = text.match(/^\s*#(region\b)|(endregion\b)/);
 					if (m) {
-						if (m[1]) { // start pattern match
-							stack.push({ startLine, tagName: '' }); // empty tagName marks region
+						if (m[1]) {
+							// start pattern match
+							stack.push({ startLine, tagName: "" }); // empty tagName marks region
 						} else {
 							let i = stack.length - 1;
 							while (i >= 0 && stack[i].tagName.length) {
@@ -154,15 +179,28 @@ export class HTMLFolding {
 								stack.length = i;
 								const endLine = startLine;
 								startLine = stackElement.startLine;
-								if (endLine > startLine && prevStart !== startLine) {
-									addRange({ startLine, endLine, kind: FoldingRangeKind.Region });
+								if (
+									endLine > startLine &&
+									prevStart !== startLine
+								) {
+									addRange({
+										startLine,
+										endLine,
+										kind: FoldingRangeKind.Region,
+									});
 								}
 							}
 						}
 					} else {
-						const endLine = document.positionAt(scanner.getTokenOffset() + scanner.getTokenLength()).line;
+						const endLine = document.positionAt(
+							scanner.getTokenOffset() + scanner.getTokenLength(),
+						).line;
 						if (startLine < endLine) {
-							addRange({ startLine, endLine, kind: FoldingRangeKind.Comment });
+							addRange({
+								startLine,
+								endLine,
+								kind: FoldingRangeKind.Comment,
+							});
 						}
 					}
 					break;
@@ -171,7 +209,7 @@ export class HTMLFolding {
 			token = scanner.scan();
 		}
 
-		const rangeLimit = context && context.rangeLimit || Number.MAX_VALUE;
+		const rangeLimit = (context && context.rangeLimit) || Number.MAX_VALUE;
 		if (ranges.length > rangeLimit) {
 			return this.limitRanges(ranges, rangeLimit);
 		}

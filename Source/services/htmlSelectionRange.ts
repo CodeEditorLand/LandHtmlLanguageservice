@@ -3,30 +3,50 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { createScanner } from '../parser/htmlScanner';
-import { Node, HTMLParser, HTMLDocument } from '../parser/htmlParser';
-import { TokenType, Range, Position, SelectionRange, TextDocument } from '../htmlLanguageTypes';
+import {
+	Position,
+	Range,
+	SelectionRange,
+	TextDocument,
+	TokenType,
+} from "../htmlLanguageTypes";
+import { HTMLDocument, HTMLParser, Node } from "../parser/htmlParser";
+import { createScanner } from "../parser/htmlScanner";
 
 export class HTMLSelectionRange {
+	constructor(private htmlParser: HTMLParser) {}
 
-	constructor(private htmlParser: HTMLParser) {
-	}
-
-	public getSelectionRanges(document: TextDocument, positions: Position[]): SelectionRange[] {
+	public getSelectionRanges(
+		document: TextDocument,
+		positions: Position[],
+	): SelectionRange[] {
 		const htmlDocument = this.htmlParser.parseDocument(document);
-		return positions.map(p => this.getSelectionRange(p, document, htmlDocument));
+		return positions.map((p) =>
+			this.getSelectionRange(p, document, htmlDocument),
+		);
 	}
-	private getSelectionRange(position: Position, document: TextDocument, htmlDocument: HTMLDocument): SelectionRange {
-		const applicableRanges = this.getApplicableRanges(document, position, htmlDocument);
+	private getSelectionRange(
+		position: Position,
+		document: TextDocument,
+		htmlDocument: HTMLDocument,
+	): SelectionRange {
+		const applicableRanges = this.getApplicableRanges(
+			document,
+			position,
+			htmlDocument,
+		);
 		let prev: [number, number] | undefined = undefined;
 		let current: SelectionRange | undefined = undefined;
 		for (let index = applicableRanges.length - 1; index >= 0; index--) {
 			const range = applicableRanges[index];
 			if (!prev || range[0] !== prev[0] || range[1] !== prev[1]) {
-				current = SelectionRange.create(Range.create(
-					document.positionAt(applicableRanges[index][0]),
-					document.positionAt(applicableRanges[index][1])
-				), current);
+				current = SelectionRange.create(
+					Range.create(
+						document.positionAt(applicableRanges[index][0]),
+						document.positionAt(applicableRanges[index][1]),
+					),
+					current,
+				);
 			}
 			prev = range;
 		}
@@ -35,7 +55,11 @@ export class HTMLSelectionRange {
 		}
 		return current;
 	}
-	private getApplicableRanges(document: TextDocument, position: Position, htmlDoc: HTMLDocument): [number, number][] {
+	private getApplicableRanges(
+		document: TextDocument,
+		position: Position,
+		htmlDoc: HTMLDocument,
+	): [number, number][] {
 		const currOffset = document.offsetAt(position);
 		const currNode = htmlDoc.findNodeAt(currOffset);
 
@@ -43,17 +67,19 @@ export class HTMLSelectionRange {
 
 		// Self-closing or void elements
 		if (currNode.startTagEnd && !currNode.endTagStart) {
-
 			// THe rare case of unmatching tag pairs like <div></div1>
 			if (currNode.startTagEnd !== currNode.end) {
 				return [[currNode.start, currNode.end]];
 			}
 
-			const closeRange = Range.create(document.positionAt(currNode.startTagEnd - 2), document.positionAt(currNode.startTagEnd));
+			const closeRange = Range.create(
+				document.positionAt(currNode.startTagEnd - 2),
+				document.positionAt(currNode.startTagEnd),
+			);
 			const closeText = document.getText(closeRange);
 
 			// Self-closing element
-			if (closeText === '/>') {
+			if (closeText === "/>") {
 				result.unshift([currNode.start + 1, currNode.startTagEnd - 2]);
 			}
 			// Void element
@@ -61,7 +87,11 @@ export class HTMLSelectionRange {
 				result.unshift([currNode.start + 1, currNode.startTagEnd - 1]);
 			}
 
-			const attributeLevelRanges = this.getAttributeLevelRanges(document, currNode, currOffset);
+			const attributeLevelRanges = this.getAttributeLevelRanges(
+				document,
+				currNode,
+				currOffset,
+			);
 			result = attributeLevelRanges.concat(result);
 			return result;
 		}
@@ -81,22 +111,27 @@ export class HTMLSelectionRange {
 		 */
 		if (currNode.start < currOffset && currOffset < currNode.startTagEnd) {
 			result.unshift([currNode.start + 1, currNode.startTagEnd - 1]);
-			const attributeLevelRanges = this.getAttributeLevelRanges(document, currNode, currOffset);
+			const attributeLevelRanges = this.getAttributeLevelRanges(
+				document,
+				currNode,
+				currOffset,
+			);
 			result = attributeLevelRanges.concat(result);
 			return result;
-		}
+		} else if (
 		/**
 		 * Cursor inside `bar`
 		 */
-		else if (currNode.startTagEnd <= currOffset && currOffset <= currNode.endTagStart) {
+			currNode.startTagEnd <= currOffset &&
+			currOffset <= currNode.endTagStart
+		) {
 			result.unshift([currNode.startTagEnd, currNode.endTagStart]);
 
 			return result;
-		}
+		} else {
 		/**
 		 * Cursor inside `</div>`
 		 */
-		else {
 			// `div` inside `</div>`
 			if (currOffset >= currNode.endTagStart + 2) {
 				result.unshift([currNode.endTagStart + 2, currNode.end - 1]);
@@ -108,13 +143,11 @@ export class HTMLSelectionRange {
 	private getAllParentTagRanges(initialNode: Node): [number, number][] {
 		let currNode = initialNode;
 
-
-
 		const result: [number, number][] = [];
 
 		while (currNode.parent) {
 			currNode = currNode.parent;
-			this.getNodeRanges(currNode).forEach(r => result.push(r));
+			this.getNodeRanges(currNode).forEach((r) => result.push(r));
 		}
 
 		return result;
@@ -123,17 +156,22 @@ export class HTMLSelectionRange {
 		if (n.startTagEnd && n.endTagStart && n.startTagEnd < n.endTagStart) {
 			return [
 				[n.startTagEnd, n.endTagStart],
-				[n.start, n.end]
+				[n.start, n.end],
 			];
 		}
 
-		return [
-			[n.start, n.end]
-		];
-	};
+		return [[n.start, n.end]];
+	}
 
-	private getAttributeLevelRanges(document: TextDocument, currNode: Node, currOffset: number): [number, number][] {
-		const currNodeRange = Range.create(document.positionAt(currNode.start), document.positionAt(currNode.end));
+	private getAttributeLevelRanges(
+		document: TextDocument,
+		currNode: Node,
+		currOffset: number,
+	): [number, number][] {
+		const currNodeRange = Range.create(
+			document.positionAt(currNode.start),
+			document.positionAt(currNode.end),
+		);
 		const currNodeText = document.getText(currNodeRange);
 		const relativeOffset = currOffset - currNode.start;
 
@@ -164,7 +202,10 @@ export class HTMLSelectionRange {
 
 					if (relativeOffset <= scanner.getTokenEnd()) {
 						// `class`
-						result.unshift([scanner.getTokenOffset(), scanner.getTokenEnd()]);
+						result.unshift([
+							scanner.getTokenOffset(),
+							scanner.getTokenEnd(),
+						]);
 					}
 
 					isInsideAttribute = true;
@@ -183,14 +224,32 @@ export class HTMLSelectionRange {
 						break;
 					}
 
-					if (relativeOffset >= scanner.getTokenOffset() && relativeOffset <= scanner.getTokenEnd()) {
+					if (
+						relativeOffset >= scanner.getTokenOffset() &&
+						relativeOffset <= scanner.getTokenEnd()
+					) {
 						// `"foo"`
-						result.unshift([scanner.getTokenOffset(), scanner.getTokenEnd()]);
+						result.unshift([
+							scanner.getTokenOffset(),
+							scanner.getTokenEnd(),
+						]);
 
 						// `foo`
-						if ((valueText[0] === `"` && valueText[valueText.length - 1] === `"`) || (valueText[0] === `'` && valueText[valueText.length - 1] === `'`)) {
-							if (relativeOffset >= scanner.getTokenOffset() + 1 && relativeOffset <= scanner.getTokenEnd() - 1) {
-								result.unshift([scanner.getTokenOffset() + 1, scanner.getTokenEnd() - 1]);
+						if (
+							(valueText[0] === `"` &&
+								valueText[valueText.length - 1] === `"`) ||
+							(valueText[0] === `'` &&
+								valueText[valueText.length - 1] === `'`)
+						) {
+							if (
+								relativeOffset >=
+									scanner.getTokenOffset() + 1 &&
+								relativeOffset <= scanner.getTokenEnd() - 1
+							) {
+								result.unshift([
+									scanner.getTokenOffset() + 1,
+									scanner.getTokenEnd() - 1,
+								]);
 							}
 						}
 
@@ -204,7 +263,7 @@ export class HTMLSelectionRange {
 			token = scanner.scan();
 		}
 
-		return result.map(pair => {
+		return result.map((pair) => {
 			return [pair[0] + positionOffset, pair[1] + positionOffset];
 		});
 	}

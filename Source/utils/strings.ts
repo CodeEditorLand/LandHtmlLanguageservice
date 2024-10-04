@@ -35,7 +35,6 @@ export function endsWith(haystack: string, needle: string): boolean {
  * @returns the length of the common prefix of the two strings.
  */
 export function commonPrefixLength(a: string, b: string): number {
-
 	let i: number;
 	const len = Math.min(a.length, b.length);
 
@@ -49,7 +48,7 @@ export function commonPrefixLength(a: string, b: string): number {
 }
 
 export function repeat(value: string, count: number) {
-	let s = '';
+	let s = "";
 	while (count > 0) {
 		if ((count & 1) === 1) {
 			s += value;
@@ -60,12 +59,12 @@ export function repeat(value: string, count: number) {
 	return s;
 }
 
-const _a = 'a'.charCodeAt(0);
-const _z = 'z'.charCodeAt(0);
-const _A = 'A'.charCodeAt(0);
-const _Z = 'Z'.charCodeAt(0);
-const _0 = '0'.charCodeAt(0);
-const _9 = '9'.charCodeAt(0);
+const _a = "a".charCodeAt(0);
+const _z = "z".charCodeAt(0);
+const _A = "A".charCodeAt(0);
+const _Z = "Z".charCodeAt(0);
+const _0 = "0".charCodeAt(0);
+const _9 = "9".charCodeAt(0);
 
 export function isLetterOrDigit(text: string, index: number) {
 	const c = text.charCodeAt(index);

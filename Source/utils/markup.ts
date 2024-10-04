@@ -3,22 +3,24 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { MarkupContent } from '../htmlLanguageTypes';
+import { MarkupContent } from "../htmlLanguageTypes";
 
-export function normalizeMarkupContent(input: string | MarkupContent | undefined): MarkupContent | undefined {
+export function normalizeMarkupContent(
+	input: string | MarkupContent | undefined,
+): MarkupContent | undefined {
 	if (!input) {
 		return undefined;
 	}
 
-	if (typeof input === 'string') {
+	if (typeof input === "string") {
 		return {
-			kind: 'markdown',
-			value: input
+			kind: "markdown",
+			value: input,
 		};
 	}
 
 	return {
-		kind: 'markdown',
-		value: input.value
+		kind: "markdown",
+		value: input.value,
 	};
 }
