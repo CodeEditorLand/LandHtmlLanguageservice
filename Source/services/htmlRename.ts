@@ -3,68 +3,82 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextDocument, Position, WorkspaceEdit, Range, TextEdit } from '../htmlLanguageTypes';
-import { HTMLDocument, Node } from '../parser/htmlParser';
+import {
+	Position,
+	Range,
+	TextDocument,
+	TextEdit,
+	WorkspaceEdit,
+} from "../htmlLanguageTypes";
+import { HTMLDocument, Node } from "../parser/htmlParser";
 
 export function doRename(
-  document: TextDocument,
-  position: Position,
-  newName: string,
-  htmlDocument: HTMLDocument
+	document: TextDocument,
+	position: Position,
+	newName: string,
+	htmlDocument: HTMLDocument,
 ): WorkspaceEdit | null {
-  const offset = document.offsetAt(position);
-  const node = htmlDocument.findNodeAt(offset);
+	const offset = document.offsetAt(position);
+	const node = htmlDocument.findNodeAt(offset);
 
-  if (!node.tag) {
-    return null;
-  }
+	if (!node.tag) {
+		return null;
+	}
 
-  if (!isWithinTagRange(node, offset, node.tag)) {
-    return null;
-  }
+	if (!isWithinTagRange(node, offset, node.tag)) {
+		return null;
+	}
 
-  const edits: TextEdit[] = [];
+	const edits: TextEdit[] = [];
 
-  const startTagRange: Range = {
-    start: document.positionAt(node.start + '<'.length),
-    end: document.positionAt(node.start + '<'.length + node.tag.length)
-  };
-  edits.push({
-    range: startTagRange,
-    newText: newName
-  });
+	const startTagRange: Range = {
+		start: document.positionAt(node.start + "<".length),
+		end: document.positionAt(node.start + "<".length + node.tag.length),
+	};
+	edits.push({
+		range: startTagRange,
+		newText: newName,
+	});
 
-  if (node.endTagStart) {
-    const endTagRange: Range = {
-      start: document.positionAt(node.endTagStart + '</'.length),
-      end: document.positionAt(node.endTagStart + '</'.length + node.tag.length)
-    };
-    edits.push({
-      range: endTagRange,
-      newText: newName
-    });
-  }
+	if (node.endTagStart) {
+		const endTagRange: Range = {
+			start: document.positionAt(node.endTagStart + "</".length),
+			end: document.positionAt(
+				node.endTagStart + "</".length + node.tag.length,
+			),
+		};
+		edits.push({
+			range: endTagRange,
+			newText: newName,
+		});
+	}
 
-  const changes = {
-    [document.uri.toString()]: edits
-  };
+	const changes = {
+		[document.uri.toString()]: edits,
+	};
 
-  return {
-    changes
-  };
+	return {
+		changes,
+	};
 }
 
 function toLocString(p: Position) {
-  return `(${p.line}, ${p.character})`;
+	return `(${p.line}, ${p.character})`;
 }
 
 function isWithinTagRange(node: Node, offset: number, nodeTag: string) {
-  // Self-closing tag
-  if (node.endTagStart) {
-    if (node.endTagStart + '</'.length <= offset && offset <= node.endTagStart + '</'.length + nodeTag.length) {
-      return true;
-    }
-  }
+	// Self-closing tag
+	if (node.endTagStart) {
+		if (
+			node.endTagStart + "</".length <= offset &&
+			offset <= node.endTagStart + "</".length + nodeTag.length
+		) {
+			return true;
+		}
+	}
 
-  return node.start + '<'.length <= offset && offset <= node.start + '<'.length + nodeTag.length;
+	return (
+		node.start + "<".length <= offset &&
+		offset <= node.start + "<".length + nodeTag.length
+	);
 }

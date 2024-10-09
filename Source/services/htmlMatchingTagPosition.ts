@@ -3,19 +3,19 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { TextDocument, Position } from '../htmlLanguageTypes';
-import { HTMLDocument } from '../parser/htmlParser';
+import { Position, TextDocument } from "../htmlLanguageTypes";
+import { HTMLDocument } from "../parser/htmlParser";
 
 export function findMatchingTagPosition(
-  document: TextDocument,
-  position: Position,
-  htmlDocument: HTMLDocument
+	document: TextDocument,
+	position: Position,
+	htmlDocument: HTMLDocument,
 ): Position | null {
-  const offset = document.offsetAt(position);
-  const node = htmlDocument.findNodeAt(offset);
+	const offset = document.offsetAt(position);
+	const node = htmlDocument.findNodeAt(offset);
 
-  if (!node.tag) {
-    return null;
+	if (!node.tag) {
+		return null;
 	}
 
 	if (!node.endTagStart) {
@@ -23,14 +23,22 @@ export function findMatchingTagPosition(
 	}
 
 	// Within open tag, compute close tag
-	if (node.start + '<'.length <= offset && offset <= node.start + '<'.length + node.tag.length) {
-		const mirrorOffset = (offset - '<'.length - node.start) + node.endTagStart + '</'.length;
+	if (
+		node.start + "<".length <= offset &&
+		offset <= node.start + "<".length + node.tag.length
+	) {
+		const mirrorOffset =
+			offset - "<".length - node.start + node.endTagStart + "</".length;
 		return document.positionAt(mirrorOffset);
 	}
 
 	// Within closing tag, compute open tag
-	if (node.endTagStart + '</'.length <= offset && offset <= node.endTagStart + '</'.length + node.tag.length) {
-		const mirrorOffset = (offset - '</'.length - node.endTagStart) + node.start + '<'.length;
+	if (
+		node.endTagStart + "</".length <= offset &&
+		offset <= node.endTagStart + "</".length + node.tag.length
+	) {
+		const mirrorOffset =
+			offset - "</".length - node.endTagStart + node.start + "<".length;
 		return document.positionAt(mirrorOffset);
 	}
 
