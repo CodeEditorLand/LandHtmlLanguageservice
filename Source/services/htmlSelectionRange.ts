@@ -119,9 +119,9 @@ export class HTMLSelectionRange {
 			result = attributeLevelRanges.concat(result);
 			return result;
 		} else if (
-		/**
-		 * Cursor inside `bar`
-		 */
+			/**
+			 * Cursor inside `bar`
+			 */
 			currNode.startTagEnd <= currOffset &&
 			currOffset <= currNode.endTagStart
 		) {
@@ -129,9 +129,9 @@ export class HTMLSelectionRange {
 
 			return result;
 		} else {
-		/**
-		 * Cursor inside `</div>`
-		 */
+			/**
+			 * Cursor inside `</div>`
+			 */
 			// `div` inside `</div>`
 			if (currOffset >= currNode.endTagStart + 2) {
 				result.unshift([currNode.endTagStart + 2, currNode.end - 1]);
