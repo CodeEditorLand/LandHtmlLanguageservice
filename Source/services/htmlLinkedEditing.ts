@@ -12,6 +12,7 @@ export function findLinkedEditingRanges(
 	htmlDocument: HTMLDocument,
 ): Range[] | null {
 	const offset = document.offsetAt(position);
+
 	const node = htmlDocument.findNodeAt(offset);
 
 	const tagLength = node.tag ? node.tag.length : 0;

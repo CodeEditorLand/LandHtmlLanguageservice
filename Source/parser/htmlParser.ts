@@ -45,13 +45,16 @@ export class Node {
 
 	public findNodeBefore(offset: number): Node {
 		const idx = findFirst(this.children, (c) => offset <= c.start) - 1;
+
 		if (idx >= 0) {
 			const child = this.children[idx];
+
 			if (offset > child.start) {
 				if (offset < child.end) {
 					return child.findNodeBefore(offset);
 				}
 				const lastChild = child.lastChild;
+
 				if (lastChild && lastChild.end === child.end) {
 					return child.findNodeBefore(offset);
 				}
@@ -63,8 +66,10 @@ export class Node {
 
 	public findNodeAt(offset: number): Node {
 		const idx = findFirst(this.children, (c) => offset <= c.start) - 1;
+
 		if (idx >= 0) {
 			const child = this.children[idx];
+
 			if (offset > child.start && offset <= child.end) {
 				return child.findNodeAt(offset);
 			}
@@ -93,11 +98,17 @@ export class HTMLParser {
 		const scanner = createScanner(text, undefined, undefined, true);
 
 		const htmlDocument = new Node(0, text.length, [], void 0);
+
 		let curr = htmlDocument;
+
 		let endTagStart: number = -1;
+
 		let endTagName: string | undefined = undefined;
+
 		let pendingAttribute: string | null = null;
+
 		let token = scanner.scan();
+
 		while (token !== TokenType.EOS) {
 			switch (token) {
 				case TokenType.StartTagOpen:
@@ -109,15 +120,20 @@ export class HTMLParser {
 					);
 					curr.children.push(child);
 					curr = child;
+
 					break;
+
 				case TokenType.StartTag:
 					curr.tag = scanner.getTokenText();
+
 					break;
+
 				case TokenType.StartTagClose:
 					if (curr.parent) {
 						curr.end = scanner.getTokenEnd(); // might be later set to end tag position
 						if (scanner.getTokenLength()) {
 							curr.startTagEnd = scanner.getTokenEnd();
+
 							if (
 								curr.tag &&
 								this.dataManager.isVoidElement(
@@ -134,6 +150,7 @@ export class HTMLParser {
 						}
 					}
 					break;
+
 				case TokenType.StartTagSelfClose:
 					if (curr.parent) {
 						curr.closed = true;
@@ -142,13 +159,18 @@ export class HTMLParser {
 						curr = curr.parent;
 					}
 					break;
+
 				case TokenType.EndTagOpen:
 					endTagStart = scanner.getTokenOffset();
 					endTagName = undefined;
+
 					break;
+
 				case TokenType.EndTag:
 					endTagName = scanner.getTokenText().toLowerCase();
+
 					break;
+
 				case TokenType.EndTagClose:
 					let node = curr;
 					// see if we can find a matching tag
@@ -167,9 +189,12 @@ export class HTMLParser {
 						curr = curr.parent!;
 					}
 					break;
+
 				case TokenType.AttributeName: {
 					pendingAttribute = scanner.getTokenText();
+
 					let attributes = curr.attributes;
+
 					if (!attributes) {
 						curr.attributes = attributes = {};
 					}
@@ -178,7 +203,9 @@ export class HTMLParser {
 				}
 				case TokenType.AttributeValue: {
 					const value = scanner.getTokenText();
+
 					const attributes = curr.attributes;
+
 					if (attributes && pendingAttribute) {
 						attributes[pendingAttribute] = value;
 						pendingAttribute = null;

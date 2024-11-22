@@ -56,11 +56,13 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 
 	provideAttributes(tag: string) {
 		const attributes: IAttributeData[] = [];
+
 		const processAttribute = (a: IAttributeData) => {
 			attributes.push(a);
 		};
 
 		const tagEntry = this._tagMap[tag.toLowerCase()];
+
 		if (tagEntry) {
 			tagEntry.attributes.forEach(processAttribute);
 		}
@@ -95,6 +97,7 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 		};
 
 		const tagEntry = this._tagMap[tag.toLowerCase()];
+
 		if (tagEntry) {
 			processAttributes(tagEntry.attributes);
 		}
@@ -120,6 +123,7 @@ export function generateDocumentation(
 
 	if (item.description && settings.documentation !== false) {
 		const normalizedDescription = normalizeMarkupContent(item.description);
+
 		if (normalizedDescription) {
 			result.value += normalizedDescription.value;
 		}

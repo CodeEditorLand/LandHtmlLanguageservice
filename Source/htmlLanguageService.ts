@@ -62,12 +62,14 @@ export interface LanguageService {
 		position: Position,
 		htmlDocument: HTMLDocument,
 	): DocumentHighlight[];
+
 	doComplete(
 		document: TextDocument,
 		position: Position,
 		htmlDocument: HTMLDocument,
 		options?: CompletionConfiguration,
 	): CompletionList;
+
 	doComplete2(
 		document: TextDocument,
 		position: Position,
@@ -75,15 +77,18 @@ export interface LanguageService {
 		documentContext: DocumentContext,
 		options?: CompletionConfiguration,
 	): Promise<CompletionList>;
+
 	setCompletionParticipants(
 		registeredCompletionParticipants: ICompletionParticipant[],
 	): void;
+
 	doHover(
 		document: TextDocument,
 		position: Position,
 		htmlDocument: HTMLDocument,
 		options?: HoverSettings,
 	): Hover | null;
+
 	format(
 		document: TextDocument,
 		range: Range | undefined,
@@ -101,25 +106,30 @@ export interface LanguageService {
 		document: TextDocument,
 		htmlDocument: HTMLDocument,
 	): DocumentSymbol[];
+
 	doQuoteComplete(
 		document: TextDocument,
 		position: Position,
 		htmlDocument: HTMLDocument,
 		options?: CompletionConfiguration,
 	): string | null;
+
 	doTagComplete(
 		document: TextDocument,
 		position: Position,
 		htmlDocument: HTMLDocument,
 	): string | null;
+
 	getFoldingRanges(
 		document: TextDocument,
 		context?: { rangeLimit?: number },
 	): FoldingRange[];
+
 	getSelectionRanges(
 		document: TextDocument,
 		positions: Position[],
 	): SelectionRange[];
+
 	doRename(
 		document: TextDocument,
 		position: Position,
@@ -152,10 +162,15 @@ export function getLanguageService(
 	const dataManager = new HTMLDataManager(options);
 
 	const htmlHover = new HTMLHover(options, dataManager);
+
 	const htmlCompletion = new HTMLCompletion(options, dataManager);
+
 	const htmlParser = new HTMLParser(dataManager);
+
 	const htmlSelectionRange = new HTMLSelectionRange(htmlParser);
+
 	const htmlFolding = new HTMLFolding(dataManager);
+
 	const htmlDocumentLinks = new HTMLDocumentLinks(dataManager);
 
 	return {

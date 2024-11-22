@@ -6,6 +6,7 @@
 import { URI } from "vscode-uri";
 
 const Slash = "/".charCodeAt(0);
+
 const Dot = ".".charCodeAt(0);
 
 export function isAbsolutePath(path: string) {
@@ -14,17 +15,20 @@ export function isAbsolutePath(path: string) {
 
 export function dirname(uri: string) {
 	const lastIndexOfSlash = uri.lastIndexOf("/");
+
 	return lastIndexOfSlash !== -1 ? uri.substr(0, lastIndexOfSlash) : "";
 }
 
 export function basename(uri: string) {
 	const lastIndexOfSlash = uri.lastIndexOf("/");
+
 	return uri.substr(lastIndexOfSlash + 1);
 }
 
 export function extname(uri: string) {
 	for (let i = uri.length - 1; i >= 0; i--) {
 		const ch = uri.charCodeAt(i);
+
 		if (ch === Dot) {
 			if (i > 0 && uri.charCodeAt(i - 1) !== Slash) {
 				return uri.substr(i);
@@ -41,7 +45,9 @@ export function extname(uri: string) {
 export function resolvePath(uriString: string, path: string): string {
 	if (isAbsolutePath(path)) {
 		const uri = URI.parse(uriString);
+
 		const parts = path.split("/");
+
 		return uri.with({ path: normalizePath(parts) }).toString();
 	}
 	return joinPath(uriString, path);
@@ -49,6 +55,7 @@ export function resolvePath(uriString: string, path: string): string {
 
 export function normalizePath(parts: string[]): string {
 	const newParts: string[] = [];
+
 	for (const part of parts) {
 		if (
 			part.length === 0 ||
@@ -69,6 +76,7 @@ export function normalizePath(parts: string[]): string {
 		newParts.push("");
 	}
 	let res = newParts.join("/");
+
 	if (parts[0].length === 0) {
 		res = "/" + res;
 	}
@@ -77,7 +85,9 @@ export function normalizePath(parts: string[]): string {
 
 export function joinPath(uriString: string, ...paths: string[]): string {
 	const uri = URI.parse(uriString);
+
 	const parts = uri.path.split("/");
+
 	for (let path of paths) {
 		parts.push(...path.split("/"));
 	}

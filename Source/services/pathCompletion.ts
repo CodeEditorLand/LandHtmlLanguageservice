@@ -41,10 +41,12 @@ export class PathCompletionParticipant implements ICompletionParticipant {
 		documentContext: DocumentContext,
 	): Promise<CompletionList> {
 		const result: CompletionList = { items: [], isIncomplete: false };
+
 		for (const attributeCompletion of this.atributeCompletions) {
 			const fullValue = stripQuotes(
 				document.getText(attributeCompletion.range),
 			);
+
 			if (isCompletablePath(fullValue)) {
 				if (fullValue === "." || fullValue === "..") {
 					result.isIncomplete = true;
@@ -54,12 +56,14 @@ export class PathCompletionParticipant implements ICompletionParticipant {
 						fullValue,
 						attributeCompletion.range,
 					);
+
 					const suggestions = await this.providePathSuggestions(
 						attributeCompletion.value,
 						replaceRange,
 						document,
 						documentContext,
 					);
+
 					for (const item of suggestions) {
 						result.items.push(item);
 					}
@@ -84,10 +88,13 @@ export class PathCompletionParticipant implements ICompletionParticipant {
 			valueBeforeLastSlash || ".",
 			document.uri,
 		);
+
 		if (parentDir) {
 			try {
 				const result: CompletionItem[] = [];
+
 				const infos = await this.readDirectory(parentDir);
+
 				for (const [name, type] of infos) {
 					// Exclude paths that start with `.`
 					if (name.charCodeAt(0) !== CharCode_dot) {
@@ -136,13 +143,16 @@ function pathToReplaceRange(
 	range: Range,
 ) {
 	let replaceRange: Range;
+
 	const lastIndexOfSlash = valueBeforeCursor.lastIndexOf("/");
+
 	if (lastIndexOfSlash === -1) {
 		replaceRange = shiftRange(range, 1, -1);
 	} else {
 		// For cases where cursor is in the middle of attribute value, like <script src="./s|rc/test.js">
 		// Find the last slash before cursor, and calculate the start of replace range from there
 		const valueAfterLastSlash = fullValue.slice(lastIndexOfSlash + 1);
+
 		const startPos = shiftPosition(
 			range.end,
 			-1 - valueAfterLastSlash.length,
@@ -150,7 +160,9 @@ function pathToReplaceRange(
 
 		// If whitespace exists, replace until there is no more
 		const whitespaceIndex = valueAfterLastSlash.indexOf(" ");
+
 		let endPos;
+
 		if (whitespaceIndex !== -1) {
 			endPos = shiftPosition(startPos, whitespaceIndex);
 		} else {
@@ -168,6 +180,7 @@ function createCompletionItem(
 ): CompletionItem {
 	if (isDir) {
 		p = p + "/";
+
 		return {
 			label: p,
 			kind: CompletionItemKind.Folder,
@@ -195,6 +208,8 @@ function shiftRange(
 	endOffset: number,
 ): Range {
 	const start = shiftPosition(range.start, startOffset);
+
 	const end = shiftPosition(range.end, endOffset);
+
 	return Range.create(start, end);
 }

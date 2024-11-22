@@ -19,6 +19,7 @@ export function doRename(
 	htmlDocument: HTMLDocument,
 ): WorkspaceEdit | null {
 	const offset = document.offsetAt(position);
+
 	const node = htmlDocument.findNodeAt(offset);
 
 	if (!node.tag) {

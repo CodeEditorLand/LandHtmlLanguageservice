@@ -180,12 +180,19 @@ export enum ScannerState {
 
 export interface Scanner {
 	scan(): TokenType;
+
 	getTokenType(): TokenType;
+
 	getTokenOffset(): number;
+
 	getTokenLength(): number;
+
 	getTokenEnd(): number;
+
 	getTokenText(): string;
+
 	getTokenError(): string | undefined;
+
 	getScannerState(): ScannerState;
 }
 

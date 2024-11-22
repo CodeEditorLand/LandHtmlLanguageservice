@@ -19,14 +19,19 @@ export function format(
 	options: HTMLFormatConfiguration,
 ): TextEdit[] {
 	let value = document.getText();
+
 	let includesEnd = true;
+
 	let initialIndentLevel = 0;
+
 	const tabSize = options.tabSize || 4;
+
 	if (range) {
 		let startOffset = document.offsetAt(range.start);
 
 		// include all leading whitespace iff at the beginning of the line
 		let extendedStart = startOffset;
+
 		while (extendedStart > 0 && isWhitespace(value, extendedStart - 1)) {
 			extendedStart--;
 		}
@@ -41,7 +46,9 @@ export function format(
 
 		// include all following whitespace until the end of the line
 		let endOffset = document.offsetAt(range.end);
+
 		let extendedEnd = endOffset;
+
 		while (extendedEnd < value.length && isWhitespace(value, extendedEnd)) {
 			extendedEnd++;
 		}
@@ -56,9 +63,11 @@ export function format(
 		// Do not modify if substring starts in inside an element
 		// Ending inside an element is fine as it doesn't cause formatting errors
 		const firstHalf = value.substring(0, startOffset);
+
 		if (new RegExp(/.*[<][^>]*$/).test(firstHalf)) {
 			//return without modification
 			value = value.substring(startOffset, endOffset);
+
 			return [
 				{
 					range: range,
@@ -125,11 +134,13 @@ export function format(
 	};
 
 	let result = html_beautify(trimLeft(value), htmlOptions);
+
 	if (initialIndentLevel > 0) {
 		const indent = options.insertSpaces
 			? repeat(" ", tabSize * initialIndentLevel)
 			: repeat("\t", initialIndentLevel);
 		result = result.split("\n").join("\n" + indent);
+
 		if (range.start.character === 0) {
 			result = indent + result; // keep the indent
 		}
@@ -153,6 +164,7 @@ function getFormatOption(
 ): any {
 	if (options && options.hasOwnProperty(key)) {
 		const value = options[key];
+
 		if (value !== null) {
 			return value;
 		}
@@ -166,6 +178,7 @@ function getTagsFormatOption(
 	dflt: string[] | undefined,
 ): string[] | undefined {
 	const list = <string>getFormatOption(options, key, null);
+
 	if (typeof list === "string") {
 		if (list.length > 0) {
 			return list.split(",").map((t) => t.trim().toLowerCase());
@@ -191,6 +204,7 @@ function getTemplatingFormatOption(
 	  )[]
 	| undefined {
 	const value = getFormatOption(options, "templating", dflt);
+
 	if (value === true) {
 		return ["auto"];
 	}
@@ -206,10 +220,14 @@ function computeIndentLevel(
 	options: HTMLFormatConfiguration,
 ): number {
 	let i = offset;
+
 	let nChars = 0;
+
 	const tabSize = options.tabSize || 4;
+
 	while (i < content.length) {
 		const ch = content.charAt(i);
+
 		if (ch === " ") {
 			nChars++;
 		} else if (ch === "\t") {

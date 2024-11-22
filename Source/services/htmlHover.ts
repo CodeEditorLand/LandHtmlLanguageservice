@@ -40,11 +40,15 @@ export class HTMLHover {
 		options?: HoverSettings,
 	): Hover | null {
 		const convertContents = this.convertContents.bind(this);
+
 		const doesSupportMarkdown = this.doesSupportMarkdown();
 
 		const offset = document.offsetAt(position);
+
 		const node = htmlDocument.findNodeAt(offset);
+
 		const text = document.getText();
+
 		if (!node || !node.tag) {
 			return null;
 		}
@@ -67,6 +71,7 @@ export class HTMLHover {
 							options,
 							doesSupportMarkdown,
 						);
+
 						if (!markupContent) {
 							markupContent = {
 								kind: doesSupportMarkdown
@@ -83,6 +88,7 @@ export class HTMLHover {
 					(hover as Hover).contents = convertContents(
 						(hover as Hover).contents,
 					);
+
 					return hover;
 				}
 			}
@@ -104,6 +110,7 @@ export class HTMLHover {
 							options,
 							doesSupportMarkdown,
 						);
+
 						if (contentsDoc) {
 							hover = { contents: contentsDoc, range };
 						} else {
@@ -116,6 +123,7 @@ export class HTMLHover {
 					(hover as Hover).contents = convertContents(
 						(hover as Hover).contents,
 					);
+
 					return hover;
 				}
 			}
@@ -143,6 +151,7 @@ export class HTMLHover {
 								options,
 								doesSupportMarkdown,
 							);
+
 							if (contentsDoc) {
 								hover = { contents: contentsDoc, range };
 							} else {
@@ -155,6 +164,7 @@ export class HTMLHover {
 					(hover as Hover).contents = convertContents(
 						(hover as Hover).contents,
 					);
+
 					return hover;
 				}
 			}
@@ -174,10 +184,12 @@ export class HTMLHover {
 						.charCodeAt(0)
 						.toString(16)
 						.toUpperCase();
+
 					let hex = "U+";
 
 					if (code.length < 4) {
 						const zeroes = 4 - code.length;
+
 						let k = 0;
 
 						while (k < zeroes) {
@@ -187,11 +199,13 @@ export class HTMLHover {
 					}
 
 					hex += code;
+
 					const contentsDoc = l10n.t(
 						"Character entity representing '{0}', unicode equivalent '{1}'",
 						entities[entity],
 						hex,
 					);
+
 					if (contentsDoc) {
 						hover = { contents: contentsDoc, range };
 					} else {
@@ -203,6 +217,7 @@ export class HTMLHover {
 					(hover as Hover).contents = convertContents(
 						(hover as Hover).contents,
 					);
+
 					return hover;
 				}
 			}
@@ -214,7 +229,9 @@ export class HTMLHover {
 			startOffset: number,
 		): Range | null {
 			const scanner = createScanner(document.getText(), startOffset);
+
 			let token = scanner.scan();
+
 			while (
 				token !== TokenType.EOS &&
 				(scanner.getTokenEnd() < offset ||
@@ -233,6 +250,7 @@ export class HTMLHover {
 
 		function getEntityRange(): Range | null {
 			let k = offset - 1;
+
 			let characterStart = position.character;
 
 			while (k >= 0 && isLetterOrDigit(text, k)) {
@@ -241,6 +259,7 @@ export class HTMLHover {
 			}
 
 			let n = k + 1;
+
 			let characterEnd = characterStart;
 
 			while (isLetterOrDigit(text, n)) {
@@ -271,6 +290,7 @@ export class HTMLHover {
 
 		function filterEntity(text: string): string {
 			let k = offset - 1;
+
 			let newText = "&";
 
 			while (k >= 0 && isLetterOrDigit(text, k)) {
@@ -294,6 +314,7 @@ export class HTMLHover {
 				TokenType.EndTag,
 				node.endTagStart,
 			);
+
 			if (tagRange) {
 				return getTagHover(node.tag, tagRange, false);
 			}
@@ -301,18 +322,23 @@ export class HTMLHover {
 		}
 
 		const tagRange = getTagNameRange(TokenType.StartTag, node.start);
+
 		if (tagRange) {
 			return getTagHover(node.tag, tagRange, true);
 		}
 
 		const attrRange = getTagNameRange(TokenType.AttributeName, node.start);
+
 		if (attrRange) {
 			const tag = node.tag;
+
 			const attr = document.getText(attrRange);
+
 			return getAttrHover(tag, attr, attrRange);
 		}
 
 		const entityRange = getEntityRange();
+
 		if (entityRange) {
 			return getEntityHover(text, entityRange);
 		}
@@ -322,13 +348,17 @@ export class HTMLHover {
 			attrValueStart: number,
 		) {
 			const scanner = createScanner(document.getText(), nodeStart);
+
 			let token = scanner.scan();
+
 			let prevAttr = undefined;
+
 			while (
 				token !== TokenType.EOS &&
 				scanner.getTokenEnd() <= attrValueStart
 			) {
 				token = scanner.scan();
+
 				if (token === TokenType.AttributeName) {
 					prevAttr = scanner.getTokenText();
 				}
@@ -341,9 +371,12 @@ export class HTMLHover {
 			TokenType.AttributeValue,
 			node.start,
 		);
+
 		if (attrValueRange) {
 			const tag = node.tag;
+
 			const attrValue = trimQuotes(document.getText(attrValueRange));
+
 			const matchAttr = scanAttrAndAttrValue(
 				node.start,
 				document.offsetAt(attrValueRange.start),
@@ -395,6 +428,7 @@ export class HTMLHover {
 		if (!isDefined(this.supportsMarkdown)) {
 			if (!isDefined(this.lsOptions.clientCapabilities)) {
 				this.supportsMarkdown = true;
+
 				return this.supportsMarkdown;
 			}
 

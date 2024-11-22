@@ -20,19 +20,24 @@ export function findDocumentHighlights(
 	htmlDocument: HTMLDocument,
 ): DocumentHighlight[] {
 	const offset = document.offsetAt(position);
+
 	const node = htmlDocument.findNodeAt(offset);
+
 	if (!node.tag) {
 		return [];
 	}
 	const result = [];
+
 	const startTagRange = getTagNameRange(
 		TokenType.StartTag,
 		document,
 		node.start,
 	);
+
 	const endTagRange =
 		typeof node.endTagStart === "number" &&
 		getTagNameRange(TokenType.EndTag, document, node.endTagStart);
+
 	if (
 		(startTagRange && covers(startTagRange, position)) ||
 		(endTagRange && covers(endTagRange, position))
@@ -73,7 +78,9 @@ function getTagNameRange(
 	startOffset: number,
 ): Range | null {
 	const scanner = createScanner(document.getText(), startOffset);
+
 	let token = scanner.scan();
+
 	while (token !== TokenType.EOS && token !== tokenType) {
 		token = scanner.scan();
 	}

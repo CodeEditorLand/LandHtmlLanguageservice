@@ -22,6 +22,7 @@ export class HTMLDataManager {
 	}
 	setDataProviders(builtIn: boolean, providers: IHTMLDataProvider[]) {
 		this.dataProviders = [];
+
 		if (builtIn) {
 			this.dataProviders.push(new HTMLDataProvider("html5", htmlData));
 		}
@@ -44,7 +45,9 @@ export class HTMLDataManager {
 	}
 
 	getVoidElements(languageId: string): string[];
+
 	getVoidElements(dataProviders: IHTMLDataProvider[]): string[];
+
 	getVoidElements(
 		languageOrProviders: string | IHTMLDataProvider[],
 	): string[] {
@@ -53,6 +56,7 @@ export class HTMLDataManager {
 			: this.getDataProviders().filter((p) =>
 					p.isApplicable(languageOrProviders!),
 				);
+
 		const voidTags: string[] = [];
 		dataProviders.forEach((provider) => {
 			provider
@@ -60,6 +64,7 @@ export class HTMLDataManager {
 				.filter((tag) => tag.void)
 				.forEach((tag) => voidTags.push(tag.name));
 		});
+
 		return voidTags.sort();
 	}
 
@@ -70,6 +75,7 @@ export class HTMLDataManager {
 			return true;
 		}
 		const a = PATH_TAG_AND_ATTR[tag];
+
 		if (a) {
 			if (typeof a === "string") {
 				return a === attr;

@@ -13,6 +13,7 @@ export const enum CharCode {
  */
 export function dirname(path: string): string {
 	const idx = ~path.lastIndexOf("/") || ~path.lastIndexOf("\\");
+
 	if (idx === 0) {
 		return ".";
 	} else if (~idx === 0) {
@@ -27,6 +28,7 @@ export function dirname(path: string): string {
  */
 export function basename(path: string): string {
 	const idx = ~path.lastIndexOf("/") || ~path.lastIndexOf("\\");
+
 	if (idx === 0) {
 		return path;
 	} else if (~idx === path.length - 1) {
@@ -41,7 +43,9 @@ export function basename(path: string): string {
  */
 export function extname(path: string): string {
 	path = basename(path);
+
 	const idx = ~path.lastIndexOf(".");
+
 	return idx ? path.substring(~idx) : "";
 }
 
@@ -51,14 +55,18 @@ export const join: (...parts: string[]) => string = function () {
 	// of 1*n, where n is parts.length.
 
 	let value = "";
+
 	for (let i = 0; i < arguments.length; i++) {
 		const part = arguments[i];
+
 		if (i > 0) {
 			// add the separater between two parts unless
 			// there already is one
 			const last = value.charCodeAt(value.length - 1);
+
 			if (last !== CharCode.Slash && last !== CharCode.Backslash) {
 				const next = part.charCodeAt(0);
+
 				if (next !== CharCode.Slash && next !== CharCode.Backslash) {
 					value += "/";
 				}

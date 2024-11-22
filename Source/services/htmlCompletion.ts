@@ -68,6 +68,7 @@ export class HTMLCompletion {
 				this.dataManager,
 				this.lsOptions.fileSystemProvider.readDirectory,
 			);
+
 		const contributedParticipants = this.completionParticipants;
 		this.completionParticipants = [
 			participant as ICompletionParticipant,
@@ -79,11 +80,13 @@ export class HTMLCompletion {
 			htmlDocument,
 			settings,
 		);
+
 		try {
 			const pathCompletionResult = await participant.computeCompletions(
 				document,
 				documentContext,
 			);
+
 			return {
 				isIncomplete:
 					result.isIncomplete || pathCompletionResult.isIncomplete,
@@ -106,6 +109,7 @@ export class HTMLCompletion {
 			htmlDocument,
 			settings,
 		);
+
 		return this.convertCompletionList(result);
 	}
 
@@ -119,7 +123,9 @@ export class HTMLCompletion {
 			isIncomplete: false,
 			items: [],
 		};
+
 		const completionParticipants = this.completionParticipants;
+
 		const dataProviders = this.dataManager
 			.getDataProviders()
 			.filter(
@@ -127,19 +133,25 @@ export class HTMLCompletion {
 					p.isApplicable(document.languageId) &&
 					(!settings || settings[p.getId()] !== false),
 			);
+
 		const doesSupportMarkdown = this.doesSupportMarkdown();
 
 		const text = document.getText();
+
 		const offset = document.offsetAt(position);
 
 		const node = htmlDocument.findNodeBefore(offset);
+
 		if (!node) {
 			return result;
 		}
 
 		const scanner = createScanner(text, node.start);
+
 		let currentTag: string = "";
+
 		let currentAttributeName: string;
+
 		let voidElements: string[] | undefined;
 
 		function getReplaceRange(
@@ -175,13 +187,16 @@ export class HTMLCompletion {
 					});
 				});
 			});
+
 			return result;
 		}
 
 		function getLineIndent(offset: number) {
 			let start = offset;
+
 			while (start > 0) {
 				const ch = text.charAt(start - 1);
+
 				if ("\n\r".indexOf(ch) >= 0) {
 					return text.substring(start, offset);
 				}
@@ -199,6 +214,7 @@ export class HTMLCompletion {
 			tagNameEnd: number = offset,
 		): CompletionList {
 			const range = getReplaceRange(afterOpenBracket, tagNameEnd);
+
 			const closeTag = isFollowedBy(
 				text,
 				tagNameEnd,
@@ -207,12 +223,15 @@ export class HTMLCompletion {
 			)
 				? ""
 				: ">";
+
 			let curr: Node | undefined = node;
+
 			if (inOpenTag) {
 				curr = curr.parent; // don't suggest the own tag, it's not yet open
 			}
 			while (curr) {
 				const tag = curr.tag;
+
 				if (
 					tag &&
 					(!curr.closed ||
@@ -225,8 +244,11 @@ export class HTMLCompletion {
 						textEdit: TextEdit.replace(range, "/" + tag + closeTag),
 						insertTextFormat: InsertTextFormat.PlainText,
 					};
+
 					const startIndent = getLineIndent(curr.start);
+
 					const endIndent = getLineIndent(afterOpenBracket - 1);
+
 					if (
 						startIndent !== null &&
 						endIndent !== null &&
@@ -242,6 +264,7 @@ export class HTMLCompletion {
 						item.filterText = endIndent + "</" + tag;
 					}
 					result.items.push(item);
+
 					return result;
 				}
 				curr = curr.parent;
@@ -269,6 +292,7 @@ export class HTMLCompletion {
 					});
 				});
 			});
+
 			return result;
 		}
 
@@ -280,6 +304,7 @@ export class HTMLCompletion {
 				return result;
 			}
 			voidElements ??= this.dataManager.getVoidElements(dataProviders);
+
 			if (!this.dataManager.isVoidElement(tag, voidElements)) {
 				const pos = document.positionAt(tagCloseEnd);
 				result.items.push({
@@ -299,6 +324,7 @@ export class HTMLCompletion {
 		): CompletionList {
 			collectOpenTagSuggestions(tagStart, tagEnd);
 			collectCloseTagSuggestions(tagStart, true, tagEnd);
+
 			return result;
 		}
 
@@ -307,6 +333,7 @@ export class HTMLCompletion {
 			node.attributeNames.forEach((attribute) => {
 				existingAttributes[attribute] = true;
 			});
+
 			return existingAttributes;
 		}
 
@@ -315,13 +342,17 @@ export class HTMLCompletion {
 			nameEnd: number = offset,
 		): CompletionList {
 			let replaceEnd = offset;
+
 			while (replaceEnd < nameEnd && text[replaceEnd] !== "<") {
 				// < is a valid attribute name character, but we rather assume the attribute name ends. See #23236.
 				replaceEnd++;
 			}
 			const currentAttribute = text.substring(nameStart, nameEnd);
+
 			const range = getReplaceRange(nameStart, replaceEnd);
+
 			let value = "";
+
 			if (
 				!isFollowedBy(
 					text,
@@ -332,6 +363,7 @@ export class HTMLCompletion {
 			) {
 				const defaultValue =
 					settings?.attributeDefaultValue ?? "doublequotes";
+
 				if (defaultValue === "empty") {
 					value = "=$1";
 				} else if (defaultValue === "singlequotes") {
@@ -353,9 +385,12 @@ export class HTMLCompletion {
 					seenAttributes[attr.name] = true;
 
 					let codeSnippet = attr.name;
+
 					let command;
+
 					if (attr.valueSet !== "v" && value.length) {
 						codeSnippet = codeSnippet + value;
+
 						if (attr.valueSet || attr.name === "style") {
 							command = {
 								title: "Suggest",
@@ -382,6 +417,7 @@ export class HTMLCompletion {
 				});
 			});
 			collectDataAttributesSuggestions(range, seenAttributes);
+
 			return result;
 		}
 
@@ -390,6 +426,7 @@ export class HTMLCompletion {
 			seenAttributes: { [attribute: string]: boolean },
 		) {
 			const dataAttr = "data-";
+
 			const dataAttributes: { [name: string]: string } = {};
 
 			dataAttributes[dataAttr] = `${dataAttr}$1="$2"`;
@@ -427,8 +464,11 @@ export class HTMLCompletion {
 			valueEnd: number = offset,
 		): CompletionList {
 			let range: Range;
+
 			let addQuotes: boolean;
+
 			let valuePrefix: string;
+
 			if (
 				offset > valueStart &&
 				offset <= valueEnd &&
@@ -436,6 +476,7 @@ export class HTMLCompletion {
 			) {
 				// inside quoted attribute
 				const valueContentStart = valueStart + 1;
+
 				let valueContentEnd = valueEnd;
 				// valueEnd points to the char after quote, which encloses the replace range
 				if (
@@ -446,6 +487,7 @@ export class HTMLCompletion {
 				}
 
 				const wsBefore = getWordStart(text, offset, valueContentStart);
+
 				const wsAfter = getWordEnd(text, offset, valueContentEnd);
 				range = getReplaceRange(wsBefore, wsAfter);
 				valuePrefix =
@@ -461,8 +503,11 @@ export class HTMLCompletion {
 
 			if (completionParticipants.length > 0) {
 				const tag = currentTag.toLowerCase();
+
 				const attribute = currentAttributeName.toLowerCase();
+
 				const fullRange = getReplaceRange(valueStart, valueEnd);
+
 				for (const participant of completionParticipants) {
 					if (participant.onHtmlAttributeValue) {
 						participant.onHtmlAttributeValue({
@@ -500,12 +545,14 @@ export class HTMLCompletion {
 					});
 			});
 			collectCharacterEntityProposals();
+
 			return result;
 		}
 
 		function scanNextForEndPos(nextToken: TokenType): number {
 			if (offset === scanner.getTokenEnd()) {
 				token = scanner.scan();
+
 				if (
 					token === nextToken &&
 					scanner.getTokenOffset() === offset
@@ -529,7 +576,9 @@ export class HTMLCompletion {
 		function collectCharacterEntityProposals() {
 			// character entities
 			let k = offset - 1;
+
 			let characterStart = position.character;
+
 			while (k >= 0 && isLetterOrDigit(text, k)) {
 				k--;
 				characterStart--;
@@ -539,6 +588,7 @@ export class HTMLCompletion {
 					Position.create(position.line, characterStart - 1),
 					position,
 				);
+
 				for (const entity in entities) {
 					if (endsWith(entity, ";")) {
 						const label = "&" + entity;
@@ -576,12 +626,14 @@ export class HTMLCompletion {
 				case TokenType.StartTagOpen:
 					if (scanner.getTokenEnd() === offset) {
 						const endPos = scanNextForEndPos(TokenType.StartTag);
+
 						if (position.line === 0) {
 							suggestDoctype(offset, endPos);
 						}
 						return collectTagSuggestions(offset, endPos);
 					}
 					break;
+
 				case TokenType.StartTag:
 					if (
 						scanner.getTokenOffset() <= offset &&
@@ -593,7 +645,9 @@ export class HTMLCompletion {
 						);
 					}
 					currentTag = scanner.getTokenText();
+
 					break;
+
 				case TokenType.AttributeName:
 					if (
 						scanner.getTokenOffset() <= offset &&
@@ -605,15 +659,19 @@ export class HTMLCompletion {
 						);
 					}
 					currentAttributeName = scanner.getTokenText();
+
 					break;
+
 				case TokenType.DelimiterAssign:
 					if (scanner.getTokenEnd() === offset) {
 						const endPos = scanNextForEndPos(
 							TokenType.AttributeValue,
 						);
+
 						return collectAttributeValueSuggestions(offset, endPos);
 					}
 					break;
+
 				case TokenType.AttributeValue:
 					if (
 						scanner.getTokenOffset() <= offset &&
@@ -625,41 +683,51 @@ export class HTMLCompletion {
 						);
 					}
 					break;
+
 				case TokenType.Whitespace:
 					if (offset <= scanner.getTokenEnd()) {
 						switch (scanner.getScannerState()) {
 							case ScannerState.AfterOpeningStartTag:
 								const startPos = scanner.getTokenOffset();
+
 								const endTagPos = scanNextForEndPos(
 									TokenType.StartTag,
 								);
+
 								return collectTagSuggestions(
 									startPos,
 									endTagPos,
 								);
+
 							case ScannerState.WithinTag:
 							case ScannerState.AfterAttributeName:
 								return collectAttributeNameSuggestions(
 									scanner.getTokenEnd(),
 								);
+
 							case ScannerState.BeforeAttributeValue:
 								return collectAttributeValueSuggestions(
 									scanner.getTokenEnd(),
 								);
+
 							case ScannerState.AfterOpeningEndTag:
 								return collectCloseTagSuggestions(
 									scanner.getTokenOffset() - 1,
 									false,
 								);
+
 							case ScannerState.WithinContent:
 								return collectInsideContent();
 						}
 					}
 					break;
+
 				case TokenType.EndTagOpen:
 					if (offset <= scanner.getTokenEnd()) {
 						const afterOpenBracket = scanner.getTokenOffset() + 1;
+
 						const endOffset = scanNextForEndPos(TokenType.EndTag);
+
 						return collectCloseTagSuggestions(
 							afterOpenBracket,
 							false,
@@ -667,11 +735,14 @@ export class HTMLCompletion {
 						);
 					}
 					break;
+
 				case TokenType.EndTag:
 					if (offset <= scanner.getTokenEnd()) {
 						let start = scanner.getTokenOffset() - 1;
+
 						while (start >= 0) {
 							const ch = text.charAt(start);
+
 							if (ch === "/") {
 								return collectCloseTagSuggestions(
 									start,
@@ -685,6 +756,7 @@ export class HTMLCompletion {
 						}
 					}
 					break;
+
 				case TokenType.StartTagClose:
 					if (offset <= scanner.getTokenEnd()) {
 						if (currentTag) {
@@ -695,11 +767,13 @@ export class HTMLCompletion {
 						}
 					}
 					break;
+
 				case TokenType.Content:
 					if (offset <= scanner.getTokenEnd()) {
 						return collectInsideContent();
 					}
 					break;
+
 				default:
 					if (offset <= scanner.getTokenEnd()) {
 						return result;
@@ -719,19 +793,24 @@ export class HTMLCompletion {
 		settings?: CompletionConfiguration,
 	): string | null {
 		const offset = document.offsetAt(position);
+
 		if (offset <= 0) {
 			return null;
 		}
 		const defaultValue = settings?.attributeDefaultValue ?? "doublequotes";
+
 		if (defaultValue === "empty") {
 			return null;
 		}
 		const char = document.getText().charAt(offset - 1);
+
 		if (char !== "=") {
 			return null;
 		}
 		const value = defaultValue === "doublequotes" ? '"$1"' : "'$1'";
+
 		const node = htmlDocument.findNodeBefore(offset);
+
 		if (
 			node &&
 			node.attributes &&
@@ -739,7 +818,9 @@ export class HTMLCompletion {
 			(!node.endTagStart || node.endTagStart > offset)
 		) {
 			const scanner = createScanner(document.getText(), node.start);
+
 			let token = scanner.scan();
+
 			while (token !== TokenType.EOS && scanner.getTokenEnd() <= offset) {
 				if (
 					token === TokenType.AttributeName &&
@@ -772,12 +853,15 @@ export class HTMLCompletion {
 		htmlDocument: HTMLDocument,
 	): string | null {
 		const offset = document.offsetAt(position);
+
 		if (offset <= 0) {
 			return null;
 		}
 		const char = document.getText().charAt(offset - 1);
+
 		if (char === ">") {
 			const node = htmlDocument.findNodeBefore(offset);
+
 			if (
 				node &&
 				node.tag &&
@@ -787,12 +871,15 @@ export class HTMLCompletion {
 				const voidElements = this.dataManager.getVoidElements(
 					document.languageId,
 				);
+
 				if (!this.dataManager.isVoidElement(node.tag, voidElements)) {
 					const scanner = createScanner(
 						document.getText(),
 						node.start,
 					);
+
 					let token = scanner.scan();
+
 					while (
 						token !== TokenType.EOS &&
 						scanner.getTokenEnd() <= offset
@@ -809,6 +896,7 @@ export class HTMLCompletion {
 			}
 		} else if (char === "/") {
 			let node: Node | undefined = htmlDocument.findNodeBefore(offset);
+
 			while (
 				node &&
 				node.closed &&
@@ -818,7 +906,9 @@ export class HTMLCompletion {
 			}
 			if (node && node.tag) {
 				const scanner = createScanner(document.getText(), node.start);
+
 				let token = scanner.scan();
+
 				while (
 					token !== TokenType.EOS &&
 					scanner.getTokenEnd() <= offset
@@ -862,6 +952,7 @@ export class HTMLCompletion {
 		if (!isDefined(this.supportsMarkdown)) {
 			if (!isDefined(this.lsOptions.clientCapabilities)) {
 				this.supportsMarkdown = true;
+
 				return this.supportsMarkdown;
 			}
 
@@ -891,7 +982,9 @@ function isFollowedBy(
 	expectedToken: TokenType,
 ) {
 	const scanner = createScanner(s, offset, intialState);
+
 	let token = scanner.scan();
+
 	while (token === TokenType.Whitespace) {
 		token = scanner.scan();
 	}

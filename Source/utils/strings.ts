@@ -22,6 +22,7 @@ export function startsWith(haystack: string, needle: string): boolean {
  */
 export function endsWith(haystack: string, needle: string): boolean {
 	const diff = haystack.length - needle.length;
+
 	if (diff > 0) {
 		return haystack.lastIndexOf(needle) === diff;
 	} else if (diff === 0) {
@@ -36,6 +37,7 @@ export function endsWith(haystack: string, needle: string): boolean {
  */
 export function commonPrefixLength(a: string, b: string): number {
 	let i: number;
+
 	const len = Math.min(a.length, b.length);
 
 	for (i = 0; i < len; i++) {
@@ -49,6 +51,7 @@ export function commonPrefixLength(a: string, b: string): number {
 
 export function repeat(value: string, count: number) {
 	let s = "";
+
 	while (count > 0) {
 		if ((count & 1) === 1) {
 			s += value;
@@ -60,13 +63,19 @@ export function repeat(value: string, count: number) {
 }
 
 const _a = "a".charCodeAt(0);
+
 const _z = "z".charCodeAt(0);
+
 const _A = "A".charCodeAt(0);
+
 const _Z = "Z".charCodeAt(0);
+
 const _0 = "0".charCodeAt(0);
+
 const _9 = "9".charCodeAt(0);
 
 export function isLetterOrDigit(text: string, index: number) {
 	const c = text.charCodeAt(index);
+
 	return (_a <= c && c <= _z) || (_A <= c && c <= _Z) || (_0 <= c && c <= _9);
 }

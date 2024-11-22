@@ -17,6 +17,7 @@ export function findDocumentSymbols(
 	htmlDocument: HTMLDocument,
 ): SymbolInformation[] {
 	const symbols: SymbolInformation[] = [];
+
 	const symbols2 = findDocumentSymbols2(document, htmlDocument);
 
 	for (const symbol of symbols2) {
@@ -63,10 +64,12 @@ function provideFileSymbolsInternal(
 	symbols: DocumentSymbol[],
 ): void {
 	const name = nodeToName(node);
+
 	const range = Range.create(
 		document.positionAt(node.start),
 		document.positionAt(node.end),
 	);
+
 	const symbol = DocumentSymbol.create(
 		name,
 		undefined,
@@ -88,6 +91,7 @@ function nodeToName(node: Node): string {
 
 	if (node.attributes) {
 		const id = node.attributes["id"];
+
 		const classes = node.attributes["class"];
 
 		if (id) {

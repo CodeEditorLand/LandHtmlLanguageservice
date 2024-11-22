@@ -12,6 +12,7 @@ export function findMatchingTagPosition(
 	htmlDocument: HTMLDocument,
 ): Position | null {
 	const offset = document.offsetAt(position);
+
 	const node = htmlDocument.findNodeAt(offset);
 
 	if (!node.tag) {
@@ -29,6 +30,7 @@ export function findMatchingTagPosition(
 	) {
 		const mirrorOffset =
 			offset - "<".length - node.start + node.endTagStart + "</".length;
+
 		return document.positionAt(mirrorOffset);
 	}
 
@@ -39,6 +41,7 @@ export function findMatchingTagPosition(
 	) {
 		const mirrorOffset =
 			offset - "</".length - node.endTagStart + node.start + "<".length;
+
 		return document.positionAt(mirrorOffset);
 	}
 

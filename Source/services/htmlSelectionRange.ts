@@ -21,6 +21,7 @@ export class HTMLSelectionRange {
 		positions: Position[],
 	): SelectionRange[] {
 		const htmlDocument = this.htmlParser.parseDocument(document);
+
 		return positions.map((p) =>
 			this.getSelectionRange(p, document, htmlDocument),
 		);
@@ -35,10 +36,14 @@ export class HTMLSelectionRange {
 			position,
 			htmlDocument,
 		);
+
 		let prev: [number, number] | undefined = undefined;
+
 		let current: SelectionRange | undefined = undefined;
+
 		for (let index = applicableRanges.length - 1; index >= 0; index--) {
 			const range = applicableRanges[index];
+
 			if (!prev || range[0] !== prev[0] || range[1] !== prev[1]) {
 				current = SelectionRange.create(
 					Range.create(
@@ -61,6 +66,7 @@ export class HTMLSelectionRange {
 		htmlDoc: HTMLDocument,
 	): [number, number][] {
 		const currOffset = document.offsetAt(position);
+
 		const currNode = htmlDoc.findNodeAt(currOffset);
 
 		let result = this.getAllParentTagRanges(currNode);
@@ -76,6 +82,7 @@ export class HTMLSelectionRange {
 				document.positionAt(currNode.startTagEnd - 2),
 				document.positionAt(currNode.startTagEnd),
 			);
+
 			const closeText = document.getText(closeRange);
 
 			// Self-closing element
@@ -93,6 +100,7 @@ export class HTMLSelectionRange {
 				currOffset,
 			);
 			result = attributeLevelRanges.concat(result);
+
 			return result;
 		}
 
@@ -111,12 +119,14 @@ export class HTMLSelectionRange {
 		 */
 		if (currNode.start < currOffset && currOffset < currNode.startTagEnd) {
 			result.unshift([currNode.start + 1, currNode.startTagEnd - 1]);
+
 			const attributeLevelRanges = this.getAttributeLevelRanges(
 				document,
 				currNode,
 				currOffset,
 			);
 			result = attributeLevelRanges.concat(result);
+
 			return result;
 		} else if (
 			/**
@@ -172,7 +182,9 @@ export class HTMLSelectionRange {
 			document.positionAt(currNode.start),
 			document.positionAt(currNode.end),
 		);
+
 		const currNodeText = document.getText(currNodeRange);
+
 		const relativeOffset = currOffset - currNode.start;
 
 		/**
@@ -180,6 +192,7 @@ export class HTMLSelectionRange {
 		 */
 
 		const scanner = createScanner(currNodeText);
+
 		let token = scanner.scan();
 
 		/**
@@ -191,12 +204,15 @@ export class HTMLSelectionRange {
 		const result = [];
 
 		let isInsideAttribute = false;
+
 		let attrStart = -1;
+
 		while (token !== TokenType.EOS) {
 			switch (token) {
 				case TokenType.AttributeName: {
 					if (relativeOffset < scanner.getTokenOffset()) {
 						isInsideAttribute = false;
+
 						break;
 					}
 
@@ -210,6 +226,7 @@ export class HTMLSelectionRange {
 
 					isInsideAttribute = true;
 					attrStart = scanner.getTokenOffset();
+
 					break;
 				}
 				case TokenType.AttributeValue: {
@@ -218,9 +235,11 @@ export class HTMLSelectionRange {
 					}
 
 					const valueText = scanner.getTokenText();
+
 					if (relativeOffset < scanner.getTokenOffset()) {
 						// `class="foo"`
 						result.push([attrStart, scanner.getTokenEnd()]);
+
 						break;
 					}
 
