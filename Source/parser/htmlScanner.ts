@@ -163,6 +163,7 @@ class MultiLineStream {
 		return this.position - posNow;
 	}
 }
+
 const _BNG = "!".charCodeAt(0);
 
 const _MIN = "-".charCodeAt(0);
