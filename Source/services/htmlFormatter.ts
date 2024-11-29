@@ -35,6 +35,7 @@ export function format(
 		while (extendedStart > 0 && isWhitespace(value, extendedStart - 1)) {
 			extendedStart--;
 		}
+
 		if (extendedStart === 0 || isEOL(value, extendedStart - 1)) {
 			startOffset = extendedStart;
 		} else {
@@ -52,9 +53,11 @@ export function format(
 		while (extendedEnd < value.length && isWhitespace(value, extendedEnd)) {
 			extendedEnd++;
 		}
+
 		if (extendedEnd === value.length || isEOL(value, extendedEnd)) {
 			endOffset = extendedEnd;
 		}
+
 		range = Range.create(
 			document.positionAt(startOffset),
 			document.positionAt(endOffset),
@@ -77,12 +80,14 @@ export function format(
 		}
 
 		includesEnd = endOffset === value.length;
+
 		value = value.substring(startOffset, endOffset);
 
 		if (startOffset !== 0) {
 			const startOfLineOffset = document.offsetAt(
 				Position.create(range.start.line, 0),
 			);
+
 			initialIndentLevel = computeIndentLevel(
 				document.getText(),
 				startOfLineOffset,
@@ -95,6 +100,7 @@ export function format(
 			document.positionAt(value.length),
 		);
 	}
+
 	const htmlOptions: IBeautifyHTMLOptions = {
 		indent_size: tabSize,
 		indent_char: options.insertSpaces ? " " : "\t",
@@ -139,12 +145,14 @@ export function format(
 		const indent = options.insertSpaces
 			? repeat(" ", tabSize * initialIndentLevel)
 			: repeat("\t", initialIndentLevel);
+
 		result = result.split("\n").join("\n" + indent);
 
 		if (range.start.character === 0) {
 			result = indent + result; // keep the indent
 		}
 	}
+
 	return [
 		{
 			range: range,
@@ -169,6 +177,7 @@ function getFormatOption(
 			return value;
 		}
 	}
+
 	return dflt;
 }
 
@@ -183,8 +192,10 @@ function getTagsFormatOption(
 		if (list.length > 0) {
 			return list.split(",").map((t) => t.trim().toLowerCase());
 		}
+
 		return [];
 	}
+
 	return dflt;
 }
 
@@ -208,9 +219,11 @@ function getTemplatingFormatOption(
 	if (value === true) {
 		return ["auto"];
 	}
+
 	if (value === false || value === dflt || Array.isArray(value) === false) {
 		return ["none"];
 	}
+
 	return value;
 }
 
@@ -235,8 +248,10 @@ function computeIndentLevel(
 		} else {
 			break;
 		}
+
 		i++;
 	}
+
 	return Math.floor(nChars / tabSize);
 }
 

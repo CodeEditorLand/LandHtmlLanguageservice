@@ -52,6 +52,7 @@ export class HTMLHover {
 		if (!node || !node.tag) {
 			return null;
 		}
+
 		const dataProviders = this.dataManager
 			.getDataProviders()
 			.filter((p) => p.isApplicable(document.languageId));
@@ -80,6 +81,7 @@ export class HTMLHover {
 								value: "",
 							};
 						}
+
 						hover = { contents: markupContent, range };
 					}
 				});
@@ -92,6 +94,7 @@ export class HTMLHover {
 					return hover;
 				}
 			}
+
 			return null;
 		}
 
@@ -127,6 +130,7 @@ export class HTMLHover {
 					return hover;
 				}
 			}
+
 			return null;
 		}
 
@@ -168,6 +172,7 @@ export class HTMLHover {
 					return hover;
 				}
 			}
+
 			return null;
 		}
 
@@ -194,6 +199,7 @@ export class HTMLHover {
 
 						while (k < zeroes) {
 							hex += "0";
+
 							k += 1;
 						}
 					}
@@ -221,6 +227,7 @@ export class HTMLHover {
 					return hover;
 				}
 			}
+
 			return null;
 		}
 
@@ -239,12 +246,14 @@ export class HTMLHover {
 			) {
 				token = scanner.scan();
 			}
+
 			if (token === tokenType && offset <= scanner.getTokenEnd()) {
 				return {
 					start: document.positionAt(scanner.getTokenOffset()),
 					end: document.positionAt(scanner.getTokenEnd()),
 				};
 			}
+
 			return null;
 		}
 
@@ -255,6 +264,7 @@ export class HTMLHover {
 
 			while (k >= 0 && isLetterOrDigit(text, k)) {
 				k--;
+
 				characterStart--;
 			}
 
@@ -264,6 +274,7 @@ export class HTMLHover {
 
 			while (isLetterOrDigit(text, n)) {
 				n++;
+
 				characterEnd++;
 			}
 
@@ -301,6 +312,7 @@ export class HTMLHover {
 
 			while (isLetterOrDigit(text, k)) {
 				newText += text[k];
+
 				k += 1;
 			}
 
@@ -318,6 +330,7 @@ export class HTMLHover {
 			if (tagRange) {
 				return getTagHover(node.tag, tagRange, false);
 			}
+
 			return null;
 		}
 
@@ -435,10 +448,12 @@ export class HTMLHover {
 			const contentFormat =
 				this.lsOptions.clientCapabilities?.textDocument?.hover
 					?.contentFormat;
+
 			this.supportsMarkdown =
 				Array.isArray(contentFormat) &&
 				contentFormat.indexOf(MarkupKind.Markdown) !== -1;
 		}
+
 		return <boolean>this.supportsMarkdown;
 	}
 }

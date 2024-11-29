@@ -24,6 +24,7 @@ function normalizeRef(url: string): string {
 	if (first === last && (first === "'" || first === '"')) {
 		url = url.substring(1, url.length - 1);
 	}
+
 	return url;
 }
 
@@ -31,9 +32,11 @@ function validateRef(url: string, languageId: string): boolean {
 	if (!url.length) {
 		return false;
 	}
+
 	if (languageId === "handlebars" && /{{|}}/.test(url)) {
 		return false;
 	}
+
 	return /\b(w[\w\d+.-]*:\/\/)?[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))/.test(
 		url,
 	);
@@ -48,6 +51,7 @@ function getWorkspaceUrl(
 	if (/^\s*javascript\:/i.test(tokenContent) || /[\n\r]/.test(tokenContent)) {
 		return undefined;
 	}
+
 	tokenContent = tokenContent.replace(/^\s*/g, "");
 
 	const match = tokenContent.match(/^(\w[\w\d+.-]*):/);
@@ -59,11 +63,14 @@ function getWorkspaceUrl(
 		if (schema === "http" || schema === "https" || schema === "file") {
 			return tokenContent;
 		}
+
 		return undefined;
 	}
+
 	if (/^\#/i.test(tokenContent)) {
 		return documentUri + tokenContent;
 	}
+
 	if (/^\/\//i.test(tokenContent)) {
 		// Absolute link (that does not name the protocol)
 		const pickedScheme = strings.startsWith(documentUri, "https://")
@@ -72,12 +79,14 @@ function getWorkspaceUrl(
 
 		return pickedScheme + ":" + tokenContent.replace(/^\s*/g, "");
 	}
+
 	if (documentContext) {
 		return documentContext.resolveReference(
 			tokenContent,
 			base || documentUri,
 		);
 	}
+
 	return tokenContent;
 }
 
@@ -94,10 +103,13 @@ function createLink(
 	if (!validateRef(tokenContent, document.languageId)) {
 		return undefined;
 	}
+
 	if (tokenContent.length < attributeValue.length) {
 		startOffset++;
+
 		endOffset--;
 	}
+
 	const workspaceUrl = getWorkspaceUrl(
 		document.uri,
 		tokenContent,
@@ -108,6 +120,7 @@ function createLink(
 	if (!workspaceUrl) {
 		return undefined;
 	}
+
 	const target = validateAndCleanURI(workspaceUrl, document);
 
 	return {
@@ -131,8 +144,10 @@ function validateAndCleanURI(
 		if (uri.scheme === "file" && uri.query) {
 			// see https://github.com/microsoft/vscode/issues/194577 & https://github.com/microsoft/vscode/issues/206238
 			uri = uri.with({ query: null });
+
 			uriStr = uri.toString(/* skipEncodig*/ true);
 		}
+
 		if (
 			uri.scheme === "file" &&
 			uri.fragment &&
@@ -143,6 +158,7 @@ function validateAndCleanURI(
 		) {
 			return uri.with({ fragment: null }).toString(/* skipEncodig*/ true);
 		}
+
 		return uriStr;
 	} catch (e) {
 		return undefined;
@@ -180,6 +196,7 @@ export class HTMLDocumentLinks {
 					if (!base) {
 						afterBase = lastTagName === "base";
 					}
+
 					break;
 
 				case TokenType.AttributeName:
@@ -213,6 +230,7 @@ export class HTMLDocumentLinks {
 								newLinks.push(link);
 							}
 						}
+
 						if (afterBase && typeof base === "undefined") {
 							base = normalizeRef(attributeValue);
 
@@ -223,14 +241,19 @@ export class HTMLDocumentLinks {
 								);
 							}
 						}
+
 						afterBase = false;
+
 						lastAttributeName = undefined;
 					} else if (lastAttributeName === "id") {
 						const id = normalizeRef(scanner.getTokenText());
+
 						idLocations[id] = scanner.getTokenOffset();
 					}
+
 					break;
 			}
+
 			token = scanner.scan();
 		}
 		// change local links with ids to actual positions
@@ -244,12 +267,14 @@ export class HTMLDocumentLinks {
 
 				if (offset !== undefined) {
 					const pos = document.positionAt(offset);
+
 					link.target = `${localWithHash}${pos.line + 1},${pos.character + 1}`;
 				} else {
 					link.target = document.uri;
 				}
 			}
 		}
+
 		return newLinks;
 	}
 }

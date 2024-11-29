@@ -55,8 +55,11 @@ export interface LanguageService {
 		useDefaultDataProvider: boolean,
 		customDataProviders: IHTMLDataProvider[],
 	): void;
+
 	createScanner(input: string, initialOffset?: number): Scanner;
+
 	parseHTMLDocument(document: TextDocument): HTMLDocument;
+
 	findDocumentHighlights(
 		document: TextDocument,
 		position: Position,
@@ -94,14 +97,17 @@ export interface LanguageService {
 		range: Range | undefined,
 		options: HTMLFormatConfiguration,
 	): TextEdit[];
+
 	findDocumentLinks(
 		document: TextDocument,
 		documentContext: DocumentContext,
 	): DocumentLink[];
+
 	findDocumentSymbols(
 		document: TextDocument,
 		htmlDocument: HTMLDocument,
 	): SymbolInformation[];
+
 	findDocumentSymbols2(
 		document: TextDocument,
 		htmlDocument: HTMLDocument,
@@ -136,6 +142,7 @@ export interface LanguageService {
 		newName: string,
 		htmlDocument: HTMLDocument,
 	): WorkspaceEdit | null;
+
 	findMatchingTagPosition(
 		document: TextDocument,
 		position: Position,
@@ -147,6 +154,7 @@ export interface LanguageService {
 		position: Position,
 		htmlDocument: HTMLDocument,
 	): Range[] | null;
+
 	findLinkedEditingRanges(
 		document: TextDocument,
 		position: Position,

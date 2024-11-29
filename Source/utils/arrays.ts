@@ -15,6 +15,7 @@ export function findFirst<T>(array: T[], p: (x: T) => boolean): number {
 	if (high === 0) {
 		return 0; // no children
 	}
+
 	while (low < high) {
 		let mid = Math.floor((low + high) / 2);
 
@@ -24,6 +25,7 @@ export function findFirst<T>(array: T[], p: (x: T) => boolean): number {
 			low = mid + 1;
 		}
 	}
+
 	return low;
 }
 
@@ -48,5 +50,6 @@ export function binarySearch<T>(
 			return mid;
 		}
 	}
+
 	return -(low + 1);
 }

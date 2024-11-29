@@ -72,6 +72,7 @@ export const join: (...parts: string[]) => string = function () {
 				}
 			}
 		}
+
 		value += part;
 	}
 

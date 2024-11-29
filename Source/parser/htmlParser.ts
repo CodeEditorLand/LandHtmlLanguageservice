@@ -10,19 +10,26 @@ import { createScanner } from "./htmlScanner";
 
 export class Node {
 	public tag: string | undefined;
+
 	public closed: boolean = false;
+
 	public startTagEnd: number | undefined;
+
 	public endTagStart: number | undefined;
+
 	public attributes: { [name: string]: string | null } | undefined;
+
 	public get attributeNames(): string[] {
 		return this.attributes ? Object.keys(this.attributes) : [];
 	}
+
 	constructor(
 		public start: number,
 		public end: number,
 		public children: Node[],
 		public parent?: Node,
 	) {}
+
 	public isSameTag(tagInLowerCase: string | undefined) {
 		if (this.tag === undefined) {
 			return tagInLowerCase === undefined;
@@ -34,9 +41,11 @@ export class Node {
 			);
 		}
 	}
+
 	public get firstChild(): Node | undefined {
 		return this.children[0];
 	}
+
 	public get lastChild(): Node | undefined {
 		return this.children.length
 			? this.children[this.children.length - 1]
@@ -53,14 +62,17 @@ export class Node {
 				if (offset < child.end) {
 					return child.findNodeBefore(offset);
 				}
+
 				const lastChild = child.lastChild;
 
 				if (lastChild && lastChild.end === child.end) {
 					return child.findNodeBefore(offset);
 				}
+
 				return child;
 			}
 		}
+
 		return this;
 	}
 
@@ -74,13 +86,16 @@ export class Node {
 				return child.findNodeAt(offset);
 			}
 		}
+
 		return this;
 	}
 }
 
 export interface HTMLDocument {
 	roots: Node[];
+
 	findNodeBefore(offset: number): Node;
+
 	findNodeAt(offset: number): Node;
 }
 
@@ -118,7 +133,9 @@ export class HTMLParser {
 						[],
 						curr,
 					);
+
 					curr.children.push(child);
+
 					curr = child;
 
 					break;
@@ -142,6 +159,7 @@ export class HTMLParser {
 								)
 							) {
 								curr.closed = true;
+
 								curr = curr.parent;
 							}
 						} else {
@@ -149,19 +167,25 @@ export class HTMLParser {
 							curr = curr.parent;
 						}
 					}
+
 					break;
 
 				case TokenType.StartTagSelfClose:
 					if (curr.parent) {
 						curr.closed = true;
+
 						curr.end = scanner.getTokenEnd();
+
 						curr.startTagEnd = scanner.getTokenEnd();
+
 						curr = curr.parent;
 					}
+
 					break;
 
 				case TokenType.EndTagOpen:
 					endTagStart = scanner.getTokenOffset();
+
 					endTagName = undefined;
 
 					break;
@@ -177,17 +201,25 @@ export class HTMLParser {
 					while (!node.isSameTag(endTagName) && node.parent) {
 						node = node.parent;
 					}
+
 					if (node.parent) {
 						while (curr !== node) {
 							curr.end = endTagStart;
+
 							curr.closed = false;
+
 							curr = curr.parent!;
 						}
+
 						curr.closed = true;
+
 						curr.endTagStart = endTagStart;
+
 						curr.end = scanner.getTokenEnd();
+
 						curr = curr.parent!;
 					}
+
 					break;
 
 				case TokenType.AttributeName: {
@@ -198,9 +230,11 @@ export class HTMLParser {
 					if (!attributes) {
 						curr.attributes = attributes = {};
 					}
+
 					attributes[pendingAttribute] = null; // Support valueless attributes such as 'checked'
 					break;
 				}
+
 				case TokenType.AttributeValue: {
 					const value = scanner.getTokenText();
 
@@ -208,18 +242,25 @@ export class HTMLParser {
 
 					if (attributes && pendingAttribute) {
 						attributes[pendingAttribute] = value;
+
 						pendingAttribute = null;
 					}
+
 					break;
 				}
 			}
+
 			token = scanner.scan();
 		}
+
 		while (curr.parent) {
 			curr.end = text.length;
+
 			curr.closed = false;
+
 			curr = curr.parent;
 		}
+
 		return {
 			roots: htmlDocument.children,
 			findNodeBefore: htmlDocument.findNodeBefore.bind(htmlDocument),

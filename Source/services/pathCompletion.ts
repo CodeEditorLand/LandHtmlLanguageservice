@@ -70,6 +70,7 @@ export class PathCompletionParticipant implements ICompletionParticipant {
 				}
 			}
 		}
+
 		return result;
 	}
 
@@ -107,11 +108,13 @@ export class PathCompletionParticipant implements ICompletionParticipant {
 						);
 					}
 				}
+
 				return result;
 			} catch (e) {
 				// ignore
 			}
 		}
+
 		return [];
 	}
 }
@@ -134,6 +137,7 @@ function isCompletablePath(value: string) {
 	) {
 		return false;
 	}
+
 	return true;
 }
 
@@ -168,8 +172,10 @@ function pathToReplaceRange(
 		} else {
 			endPos = shiftPosition(range.end, -1);
 		}
+
 		replaceRange = Range.create(startPos, endPos);
 	}
+
 	return replaceRange;
 }
 

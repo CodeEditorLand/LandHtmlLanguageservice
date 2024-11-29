@@ -13,6 +13,7 @@ export class HTMLDataManager {
 
 	constructor(options: {
 		useDefaultDataProvider?: boolean;
+
 		customDataProviders?: IHTMLDataProvider[];
 	}) {
 		this.setDataProviders(
@@ -20,12 +21,14 @@ export class HTMLDataManager {
 			options.customDataProviders || [],
 		);
 	}
+
 	setDataProviders(builtIn: boolean, providers: IHTMLDataProvider[]) {
 		this.dataProviders = [];
 
 		if (builtIn) {
 			this.dataProviders.push(new HTMLDataProvider("html5", htmlData));
 		}
+
 		this.dataProviders.push(...providers);
 	}
 
@@ -58,6 +61,7 @@ export class HTMLDataManager {
 				);
 
 		const voidTags: string[] = [];
+
 		dataProviders.forEach((provider) => {
 			provider
 				.provideTags()
@@ -74,6 +78,7 @@ export class HTMLDataManager {
 		if (attr === "src" || attr === "href") {
 			return true;
 		}
+
 		const a = PATH_TAG_AND_ATTR[tag];
 
 		if (a) {
@@ -83,6 +88,7 @@ export class HTMLDataManager {
 				return a.indexOf(attr) !== -1;
 			}
 		}
+
 		return false;
 	}
 }

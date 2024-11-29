@@ -39,6 +39,7 @@ export function extname(uri: string) {
 			break;
 		}
 	}
+
 	return "";
 }
 
@@ -50,6 +51,7 @@ export function resolvePath(uriString: string, path: string): string {
 
 		return uri.with({ path: normalizePath(parts) }).toString();
 	}
+
 	return joinPath(uriString, path);
 }
 
@@ -72,14 +74,17 @@ export function normalizePath(parts: string[]): string {
 			newParts.push(part);
 		}
 	}
+
 	if (parts.length > 1 && parts[parts.length - 1].length === 0) {
 		newParts.push("");
 	}
+
 	let res = newParts.join("/");
 
 	if (parts[0].length === 0) {
 		res = "/" + res;
 	}
+
 	return res;
 }
 
@@ -91,5 +96,6 @@ export function joinPath(uriString: string, ...paths: string[]): string {
 	for (let path of paths) {
 		parts.push(...path.split("/"));
 	}
+
 	return uri.with({ path: normalizePath(parts) }).toString();
 }

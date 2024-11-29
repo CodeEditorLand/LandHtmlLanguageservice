@@ -81,12 +81,19 @@ export {
 
 export interface HTMLFormatConfiguration {
 	tabSize?: number;
+
 	insertSpaces?: boolean;
+
 	indentEmptyLines?: boolean;
+
 	wrapLineLength?: number;
+
 	unformatted?: string;
+
 	contentUnformatted?: string;
+
 	indentInnerHtml?: boolean;
+
 	wrapAttributes?:
 		| "auto"
 		| "force"
@@ -95,13 +102,21 @@ export interface HTMLFormatConfiguration {
 		| "aligned-multiple"
 		| "preserve"
 		| "preserve-aligned";
+
 	wrapAttributesIndentSize?: number;
+
 	preserveNewLines?: boolean;
+
 	maxPreserveNewLines?: number;
+
 	indentHandlebars?: boolean;
+
 	endWithNewline?: boolean;
+
 	extraLiners?: string;
+
 	indentScripts?: "keep" | "separate" | "normal";
+
 	templating?:
 		| (
 				| "auto"
@@ -114,28 +129,39 @@ export interface HTMLFormatConfiguration {
 				| "smarty"
 		  )[]
 		| boolean;
+
 	unformattedContentDelimiter?: string;
 }
 
 export interface HoverSettings {
 	documentation?: boolean;
+
 	references?: boolean;
 }
 
 export interface CompletionConfiguration {
 	[provider: string]: boolean | undefined | string;
+
 	hideAutoCompleteProposals?: boolean;
+
 	attributeDefaultValue?: "empty" | "singlequotes" | "doublequotes";
 }
 
 export interface Node {
 	tag: string | undefined;
+
 	start: number;
+
 	startTagEnd: number | undefined;
+
 	end: number;
+
 	endTagStart: number | undefined;
+
 	children: Node[];
+
 	parent?: Node;
+
 	attributes?: { [name: string]: string | null } | undefined;
 }
 
@@ -198,7 +224,9 @@ export interface Scanner {
 
 export declare type HTMLDocument = {
 	roots: Node[];
+
 	findNodeBefore(offset: number): Node;
+
 	findNodeAt(offset: number): Node;
 };
 
@@ -208,68 +236,93 @@ export interface DocumentContext {
 
 export interface HtmlAttributeValueContext {
 	document: TextDocument;
+
 	position: Position;
+
 	tag: string;
+
 	attribute: string;
+
 	value: string;
+
 	range: Range;
 }
 
 export interface HtmlContentContext {
 	document: TextDocument;
+
 	position: Position;
 }
 
 export interface ICompletionParticipant {
 	onHtmlAttributeValue?: (context: HtmlAttributeValueContext) => void;
+
 	onHtmlContent?: (context: HtmlContentContext) => void;
 }
 
 export interface IReference {
 	name: string;
+
 	url: string;
 }
 
 export interface ITagData {
 	name: string;
+
 	description?: string | MarkupContent;
+
 	attributes: IAttributeData[];
+
 	references?: IReference[];
+
 	void?: boolean;
 }
 
 export interface IAttributeData {
 	name: string;
+
 	description?: string | MarkupContent;
+
 	valueSet?: string;
+
 	values?: IValueData[];
+
 	references?: IReference[];
 }
 
 export interface IValueData {
 	name: string;
+
 	description?: string | MarkupContent;
+
 	references?: IReference[];
 }
 
 export interface IValueSet {
 	name: string;
+
 	values: IValueData[];
 }
 
 export interface HTMLDataV1 {
 	version: 1 | 1.1;
+
 	tags?: ITagData[];
+
 	globalAttributes?: IAttributeData[];
+
 	valueSets?: IValueSet[];
 }
 
 export interface IHTMLDataProvider {
 	getId(): string;
+
 	isApplicable(languageId: string): boolean;
 
 	provideTags(): ITagData[];
+
 	provideAttributes(tag: string): IAttributeData[];
+
 	provideValues(tag: string, attribute: string): IValueData[];
 }
 
@@ -395,5 +448,6 @@ export interface FileStat {
 
 export interface FileSystemProvider {
 	stat(uri: DocumentUri): Promise<FileStat>;
+
 	readDirectory?(uri: DocumentUri): Promise<[string, FileType][]>;
 }

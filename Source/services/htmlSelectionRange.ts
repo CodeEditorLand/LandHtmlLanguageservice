@@ -26,6 +26,7 @@ export class HTMLSelectionRange {
 			this.getSelectionRange(p, document, htmlDocument),
 		);
 	}
+
 	private getSelectionRange(
 		position: Position,
 		document: TextDocument,
@@ -53,13 +54,17 @@ export class HTMLSelectionRange {
 					current,
 				);
 			}
+
 			prev = range;
 		}
+
 		if (!current) {
 			current = SelectionRange.create(Range.create(position, position));
 		}
+
 		return current;
 	}
+
 	private getApplicableRanges(
 		document: TextDocument,
 		position: Position,
@@ -99,6 +104,7 @@ export class HTMLSelectionRange {
 				currNode,
 				currOffset,
 			);
+
 			result = attributeLevelRanges.concat(result);
 
 			return result;
@@ -125,6 +131,7 @@ export class HTMLSelectionRange {
 				currNode,
 				currOffset,
 			);
+
 			result = attributeLevelRanges.concat(result);
 
 			return result;
@@ -146,6 +153,7 @@ export class HTMLSelectionRange {
 			if (currOffset >= currNode.endTagStart + 2) {
 				result.unshift([currNode.endTagStart + 2, currNode.end - 1]);
 			}
+
 			return result;
 		}
 	}
@@ -157,11 +165,13 @@ export class HTMLSelectionRange {
 
 		while (currNode.parent) {
 			currNode = currNode.parent;
+
 			this.getNodeRanges(currNode).forEach((r) => result.push(r));
 		}
 
 		return result;
 	}
+
 	private getNodeRanges(n: Node): [number, number][] {
 		if (n.startTagEnd && n.endTagStart && n.startTagEnd < n.endTagStart) {
 			return [
@@ -225,10 +235,12 @@ export class HTMLSelectionRange {
 					}
 
 					isInsideAttribute = true;
+
 					attrStart = scanner.getTokenOffset();
 
 					break;
 				}
+
 				case TokenType.AttributeValue: {
 					if (!isInsideAttribute) {
 						break;
@@ -279,6 +291,7 @@ export class HTMLSelectionRange {
 					break;
 				}
 			}
+
 			token = scanner.scan();
 		}
 

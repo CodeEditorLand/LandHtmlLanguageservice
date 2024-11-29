@@ -19,8 +19,11 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 	}
 
 	private _tags: ITagData[] = [];
+
 	private _tagMap: { [t: string]: ITagData } = {};
+
 	private _globalAttributes: IAttributeData[];
+
 	private _valueSetMap: { [setName: string]: IValueData[] } = {};
 
 	/**
@@ -33,6 +36,7 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 		customData: HTMLDataV1,
 	) {
 		this._tags = customData.tags || [];
+
 		this._globalAttributes = customData.globalAttributes || [];
 
 		this._tags.forEach((t) => {
@@ -66,6 +70,7 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 		if (tagEntry) {
 			tagEntry.attributes.forEach(processAttribute);
 		}
+
 		this._globalAttributes.forEach(processAttribute);
 
 		return attributes;
@@ -101,6 +106,7 @@ export class HTMLDataProvider implements IHTMLDataProvider {
 		if (tagEntry) {
 			processAttributes(tagEntry.attributes);
 		}
+
 		processAttributes(this._globalAttributes);
 
 		return values;
@@ -137,6 +143,7 @@ export function generateDocumentation(
 		if (result.value.length) {
 			result.value += `\n\n`;
 		}
+
 		if (doesSupportMarkdown) {
 			result.value += item.references
 				.map((r) => {

@@ -26,6 +26,7 @@ export function findDocumentHighlights(
 	if (!node.tag) {
 		return [];
 	}
+
 	const result = [];
 
 	const startTagRange = getTagNameRange(
@@ -48,6 +49,7 @@ export function findDocumentHighlights(
 				range: startTagRange,
 			});
 		}
+
 		if (endTagRange) {
 			result.push({
 				kind: DocumentHighlightKind.Read,
@@ -55,6 +57,7 @@ export function findDocumentHighlights(
 			});
 		}
 	}
+
 	return result;
 }
 
@@ -84,11 +87,13 @@ function getTagNameRange(
 	while (token !== TokenType.EOS && token !== tokenType) {
 		token = scanner.scan();
 	}
+
 	if (token !== TokenType.EOS) {
 		return {
 			start: document.positionAt(scanner.getTokenOffset()),
 			end: document.positionAt(scanner.getTokenEnd()),
 		};
 	}
+
 	return null;
 }

@@ -34,7 +34,9 @@ export function findDocumentSymbols(
 			document.uri,
 			parent?.name,
 		);
+
 		symbol.containerName ??= "";
+
 		symbols.push(symbol);
 
 		if (node.children) {
@@ -82,6 +84,7 @@ function provideFileSymbolsInternal(
 
 	node.children.forEach((child) => {
 		symbol.children ??= [];
+
 		provideFileSymbolsInternal(document, child, symbol.children);
 	});
 }

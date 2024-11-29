@@ -56,9 +56,12 @@ export function repeat(value: string, count: number) {
 		if ((count & 1) === 1) {
 			s += value;
 		}
+
 		value += value;
+
 		count = count >>> 1;
 	}
+
 	return s;
 }
 

@@ -70,6 +70,7 @@ export class HTMLCompletion {
 			);
 
 		const contributedParticipants = this.completionParticipants;
+
 		this.completionParticipants = [
 			participant as ICompletionParticipant,
 		].concat(contributedParticipants);
@@ -161,6 +162,7 @@ export class HTMLCompletion {
 			if (replaceStart > offset) {
 				replaceStart = offset;
 			}
+
 			return {
 				start: document.positionAt(replaceStart),
 				end: document.positionAt(replaceEnd),
@@ -172,6 +174,7 @@ export class HTMLCompletion {
 			tagNameEnd?: number,
 		): CompletionList {
 			const range = getReplaceRange(afterOpenBracket, tagNameEnd);
+
 			dataProviders.forEach((provider) => {
 				provider.provideTags().forEach((tag) => {
 					result.items.push({
@@ -200,11 +203,14 @@ export class HTMLCompletion {
 				if ("\n\r".indexOf(ch) >= 0) {
 					return text.substring(start, offset);
 				}
+
 				if (!isWhiteSpace(ch)) {
 					return null;
 				}
+
 				start--;
 			}
+
 			return text.substring(0, offset);
 		}
 
@@ -229,6 +235,7 @@ export class HTMLCompletion {
 			if (inOpenTag) {
 				curr = curr.parent; // don't suggest the own tag, it's not yet open
 			}
+
 			while (curr) {
 				const tag = curr.tag;
 
@@ -255,20 +262,25 @@ export class HTMLCompletion {
 						startIndent !== endIndent
 					) {
 						const insertText = startIndent + "</" + tag + closeTag;
+
 						item.textEdit = TextEdit.replace(
 							getReplaceRange(
 								afterOpenBracket - 1 - endIndent.length,
 							),
 							insertText,
 						);
+
 						item.filterText = endIndent + "</" + tag;
 					}
+
 					result.items.push(item);
 
 					return result;
 				}
+
 				curr = curr.parent;
 			}
+
 			if (inOpenTag) {
 				return result;
 			}
@@ -303,10 +315,12 @@ export class HTMLCompletion {
 			if (settings && settings.hideAutoCompleteProposals) {
 				return result;
 			}
+
 			voidElements ??= this.dataManager.getVoidElements(dataProviders);
 
 			if (!this.dataManager.isVoidElement(tag, voidElements)) {
 				const pos = document.positionAt(tagCloseEnd);
+
 				result.items.push({
 					label: "</" + tag + ">",
 					kind: CompletionItemKind.Property,
@@ -315,6 +329,7 @@ export class HTMLCompletion {
 					insertTextFormat: InsertTextFormat.Snippet,
 				});
 			}
+
 			return result;
 		};
 
@@ -323,6 +338,7 @@ export class HTMLCompletion {
 			tagEnd: number,
 		): CompletionList {
 			collectOpenTagSuggestions(tagStart, tagEnd);
+
 			collectCloseTagSuggestions(tagStart, true, tagEnd);
 
 			return result;
@@ -330,6 +346,7 @@ export class HTMLCompletion {
 
 		function getExistingAttributes(): { [attribute: string]: boolean } {
 			const existingAttributes = Object.create(null);
+
 			node.attributeNames.forEach((attribute) => {
 				existingAttributes[attribute] = true;
 			});
@@ -347,6 +364,7 @@ export class HTMLCompletion {
 				// < is a valid attribute name character, but we rather assume the attribute name ends. See #23236.
 				replaceEnd++;
 			}
+
 			const currentAttribute = text.substring(nameStart, nameEnd);
 
 			const range = getReplaceRange(nameStart, replaceEnd);
@@ -382,6 +400,7 @@ export class HTMLCompletion {
 					if (seenAttributes[attr.name]) {
 						return;
 					}
+
 					seenAttributes[attr.name] = true;
 
 					let codeSnippet = attr.name;
@@ -416,6 +435,7 @@ export class HTMLCompletion {
 					});
 				});
 			});
+
 			collectDataAttributesSuggestions(range, seenAttributes);
 
 			return result;
@@ -441,6 +461,7 @@ export class HTMLCompletion {
 						dataAttributes[attr] = attr + '="$1"';
 					}
 				});
+
 				node.children.forEach((child) => addNodeDataAttributes(child));
 			}
 
@@ -449,6 +470,7 @@ export class HTMLCompletion {
 					addNodeDataAttributes(root),
 				);
 			}
+
 			Object.keys(dataAttributes).forEach((attr) =>
 				result.items.push({
 					label: attr,
@@ -489,15 +511,20 @@ export class HTMLCompletion {
 				const wsBefore = getWordStart(text, offset, valueContentStart);
 
 				const wsAfter = getWordEnd(text, offset, valueContentEnd);
+
 				range = getReplaceRange(wsBefore, wsAfter);
+
 				valuePrefix =
 					offset >= valueContentStart && offset <= valueContentEnd
 						? text.substring(valueContentStart, offset)
 						: "";
+
 				addQuotes = false;
 			} else {
 				range = getReplaceRange(valueStart, valueEnd);
+
 				valuePrefix = text.substring(valueStart, offset);
+
 				addQuotes = true;
 			}
 
@@ -544,6 +571,7 @@ export class HTMLCompletion {
 						});
 					});
 			});
+
 			collectCharacterEntityProposals();
 
 			return result;
@@ -560,6 +588,7 @@ export class HTMLCompletion {
 					return scanner.getTokenEnd();
 				}
 			}
+
 			return offset;
 		}
 
@@ -581,8 +610,10 @@ export class HTMLCompletion {
 
 			while (k >= 0 && isLetterOrDigit(text, k)) {
 				k--;
+
 				characterStart--;
 			}
+
 			if (k >= 0 && text[k] === "&") {
 				const range = Range.create(
 					Position.create(position.line, characterStart - 1),
@@ -592,6 +623,7 @@ export class HTMLCompletion {
 				for (const entity in entities) {
 					if (endsWith(entity, ";")) {
 						const label = "&" + entity;
+
 						result.items.push({
 							label,
 							kind: CompletionItemKind.Keyword,
@@ -605,11 +637,13 @@ export class HTMLCompletion {
 					}
 				}
 			}
+
 			return result;
 		}
 
 		function suggestDoctype(replaceStart: number, replaceEnd: number) {
 			const range = getReplaceRange(replaceStart, replaceEnd);
+
 			result.items.push({
 				label: "!DOCTYPE",
 				kind: CompletionItemKind.Property,
@@ -630,8 +664,10 @@ export class HTMLCompletion {
 						if (position.line === 0) {
 							suggestDoctype(offset, endPos);
 						}
+
 						return collectTagSuggestions(offset, endPos);
 					}
+
 					break;
 
 				case TokenType.StartTag:
@@ -644,6 +680,7 @@ export class HTMLCompletion {
 							scanner.getTokenEnd(),
 						);
 					}
+
 					currentTag = scanner.getTokenText();
 
 					break;
@@ -658,6 +695,7 @@ export class HTMLCompletion {
 							scanner.getTokenEnd(),
 						);
 					}
+
 					currentAttributeName = scanner.getTokenText();
 
 					break;
@@ -670,6 +708,7 @@ export class HTMLCompletion {
 
 						return collectAttributeValueSuggestions(offset, endPos);
 					}
+
 					break;
 
 				case TokenType.AttributeValue:
@@ -682,6 +721,7 @@ export class HTMLCompletion {
 							scanner.getTokenEnd(),
 						);
 					}
+
 					break;
 
 				case TokenType.Whitespace:
@@ -720,6 +760,7 @@ export class HTMLCompletion {
 								return collectInsideContent();
 						}
 					}
+
 					break;
 
 				case TokenType.EndTagOpen:
@@ -734,6 +775,7 @@ export class HTMLCompletion {
 							endOffset,
 						);
 					}
+
 					break;
 
 				case TokenType.EndTag:
@@ -752,9 +794,11 @@ export class HTMLCompletion {
 							} else if (!isWhiteSpace(ch)) {
 								break;
 							}
+
 							start--;
 						}
 					}
+
 					break;
 
 				case TokenType.StartTagClose:
@@ -766,20 +810,24 @@ export class HTMLCompletion {
 							);
 						}
 					}
+
 					break;
 
 				case TokenType.Content:
 					if (offset <= scanner.getTokenEnd()) {
 						return collectInsideContent();
 					}
+
 					break;
 
 				default:
 					if (offset <= scanner.getTokenEnd()) {
 						return result;
 					}
+
 					break;
 			}
+
 			token = scanner.scan();
 		}
 
@@ -797,16 +845,19 @@ export class HTMLCompletion {
 		if (offset <= 0) {
 			return null;
 		}
+
 		const defaultValue = settings?.attributeDefaultValue ?? "doublequotes";
 
 		if (defaultValue === "empty") {
 			return null;
 		}
+
 		const char = document.getText().charAt(offset - 1);
 
 		if (char !== "=") {
 			return null;
 		}
+
 		const value = defaultValue === "doublequotes" ? '"$1"' : "'$1'";
 
 		const node = htmlDocument.findNodeBefore(offset);
@@ -831,6 +882,7 @@ export class HTMLCompletion {
 					if (token !== TokenType.DelimiterAssign) {
 						return null;
 					}
+
 					token = scanner.scan();
 					// Any non-attribute valid tag
 					if (
@@ -839,11 +891,14 @@ export class HTMLCompletion {
 					) {
 						return null;
 					}
+
 					return value;
 				}
+
 				token = scanner.scan();
 			}
 		}
+
 		return null;
 	}
 
@@ -857,6 +912,7 @@ export class HTMLCompletion {
 		if (offset <= 0) {
 			return null;
 		}
+
 		const char = document.getText().charAt(offset - 1);
 
 		if (char === ">") {
@@ -890,6 +946,7 @@ export class HTMLCompletion {
 						) {
 							return `$0</${node.tag}>`;
 						}
+
 						token = scanner.scan();
 					}
 				}
@@ -904,6 +961,7 @@ export class HTMLCompletion {
 			) {
 				node = node.parent;
 			}
+
 			if (node && node.tag) {
 				const scanner = createScanner(document.getText(), node.start);
 
@@ -923,10 +981,12 @@ export class HTMLCompletion {
 							return node.tag;
 						}
 					}
+
 					token = scanner.scan();
 				}
 			}
 		}
+
 		return null;
 	}
 
@@ -959,10 +1019,12 @@ export class HTMLCompletion {
 			const documentationFormat =
 				this.lsOptions.clientCapabilities.textDocument?.completion
 					?.completionItem?.documentationFormat;
+
 			this.supportsMarkdown =
 				Array.isArray(documentationFormat) &&
 				documentationFormat.indexOf(MarkupKind.Markdown) !== -1;
 		}
+
 		return <boolean>this.supportsMarkdown;
 	}
 }
@@ -988,6 +1050,7 @@ function isFollowedBy(
 	while (token === TokenType.Whitespace) {
 		token = scanner.scan();
 	}
+
 	return token === expectedToken;
 }
 
@@ -995,6 +1058,7 @@ function getWordStart(s: string, offset: number, limit: number): number {
 	while (offset > limit && !isWhiteSpace(s[offset - 1])) {
 		offset--;
 	}
+
 	return offset;
 }
 
@@ -1002,5 +1066,6 @@ function getWordEnd(s: string, offset: number, limit: number): number {
 	while (offset < limit && !isWhiteSpace(s[offset])) {
 		offset++;
 	}
+
 	return offset;
 }

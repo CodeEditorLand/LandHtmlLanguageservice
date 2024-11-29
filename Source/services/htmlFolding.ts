@@ -14,6 +14,7 @@ import { createScanner } from "../parser/htmlScanner";
 
 export class HTMLFolding {
 	constructor(private dataManager: HTMLDataManager) {}
+
 	private limitRanges(ranges: FoldingRange[], rangeLimit: number) {
 		ranges = ranges.sort((r1, r2) => {
 			let diff = r1.startLine - r2.startLine;
@@ -21,6 +22,7 @@ export class HTMLFolding {
 			if (diff === 0) {
 				diff = r1.endLine - r2.endLine;
 			}
+
 			return diff;
 		});
 
@@ -55,6 +57,7 @@ export class HTMLFolding {
 				if (entry.startLine > top.startLine) {
 					if (entry.endLine <= top.endLine) {
 						previous.push(top);
+
 						top = entry;
 
 						setNestingLevel(i, previous.length);
@@ -66,6 +69,7 @@ export class HTMLFolding {
 						if (top) {
 							previous.push(top);
 						}
+
 						top = entry;
 
 						setNestingLevel(i, previous.length);
@@ -73,6 +77,7 @@ export class HTMLFolding {
 				}
 			}
 		}
+
 		let entries = 0;
 
 		let maxLevel = 0;
@@ -86,6 +91,7 @@ export class HTMLFolding {
 
 					break;
 				}
+
 				entries += n;
 			}
 		}
@@ -104,6 +110,7 @@ export class HTMLFolding {
 				}
 			}
 		}
+
 		return result;
 	}
 
@@ -127,6 +134,7 @@ export class HTMLFolding {
 
 		function addRange(range: FoldingRange) {
 			ranges.push(range);
+
 			prevStart = range.startLine;
 		}
 
@@ -138,20 +146,25 @@ export class HTMLFolding {
 					const startLine = document.positionAt(
 						scanner.getTokenOffset(),
 					).line;
+
 					stack.push({ startLine, tagName });
+
 					lastTagName = tagName;
 
 					break;
 				}
+
 				case TokenType.EndTag: {
 					lastTagName = scanner.getTokenText();
 
 					break;
 				}
+
 				case TokenType.StartTagClose:
 					if (!lastTagName) {
 						break;
 					}
+
 					voidElements ??= this.dataManager.getVoidElements(
 						document.languageId,
 					);
@@ -172,8 +185,10 @@ export class HTMLFolding {
 					while (i >= 0 && stack[i].tagName !== lastTagName) {
 						i--;
 					}
+
 					if (i >= 0) {
 						const stackElement = stack[i];
+
 						stack.length = i;
 
 						const line = document.positionAt(
@@ -188,8 +203,10 @@ export class HTMLFolding {
 							addRange({ startLine, endLine });
 						}
 					}
+
 					break;
 				}
+
 				case TokenType.Comment: {
 					let startLine = document.positionAt(
 						scanner.getTokenOffset(),
@@ -209,11 +226,14 @@ export class HTMLFolding {
 							while (i >= 0 && stack[i].tagName.length) {
 								i--;
 							}
+
 							if (i >= 0) {
 								const stackElement = stack[i];
+
 								stack.length = i;
 
 								const endLine = startLine;
+
 								startLine = stackElement.startLine;
 
 								if (
@@ -241,9 +261,11 @@ export class HTMLFolding {
 							});
 						}
 					}
+
 					break;
 				}
 			}
+
 			token = scanner.scan();
 		}
 
@@ -252,6 +274,7 @@ export class HTMLFolding {
 		if (ranges.length > rangeLimit) {
 			return this.limitRanges(ranges, rangeLimit);
 		}
+
 		return ranges;
 	}
 }

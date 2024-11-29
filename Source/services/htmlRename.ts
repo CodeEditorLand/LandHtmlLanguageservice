@@ -36,6 +36,7 @@ export function doRename(
 		start: document.positionAt(node.start + "<".length),
 		end: document.positionAt(node.start + "<".length + node.tag.length),
 	};
+
 	edits.push({
 		range: startTagRange,
 		newText: newName,
@@ -48,6 +49,7 @@ export function doRename(
 				node.endTagStart + "</".length + node.tag.length,
 			),
 		};
+
 		edits.push({
 			range: endTagRange,
 			newText: newName,
