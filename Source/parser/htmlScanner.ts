@@ -134,10 +134,8 @@ class MultiLineStream {
 
 			for (
 				;
-
 				i < ch.length &&
 				this.source.charCodeAt(this.position + i) === ch[i];
-
 				i++
 			) {}
 
