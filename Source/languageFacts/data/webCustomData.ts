@@ -39,7 +39,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/html",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/html",
 				},
 			],
 		},
@@ -60,7 +60,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/head",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/head",
 				},
 			],
 		},
@@ -75,7 +75,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/title",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/title",
 				},
 			],
 		},
@@ -109,7 +109,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/base",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/base",
 				},
 			],
 		},
@@ -213,7 +213,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/link",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/link",
 				},
 			],
 		},
@@ -267,7 +267,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/meta",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/meta",
 				},
 			],
 		},
@@ -316,7 +316,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/style",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/style",
 				},
 			],
 		},
@@ -511,7 +511,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/body",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/body",
 				},
 			],
 		},
@@ -526,7 +526,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/article",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/article",
 				},
 			],
 		},
@@ -541,7 +541,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/section",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/section",
 				},
 			],
 		},
@@ -556,7 +556,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/nav",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/nav",
 				},
 			],
 		},
@@ -571,7 +571,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/aside",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/aside",
 				},
 			],
 		},
@@ -585,7 +585,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -599,7 +599,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -613,7 +613,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -627,7 +627,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -641,7 +641,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -655,7 +655,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements",
 				},
 			],
 		},
@@ -670,7 +670,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/header",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/header",
 				},
 			],
 		},
@@ -685,7 +685,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/footer",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/footer",
 				},
 			],
 		},
@@ -700,7 +700,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/address",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/address",
 				},
 			],
 		},
@@ -714,7 +714,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/p",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/p",
 				},
 			],
 		},
@@ -754,7 +754,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/hr",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/hr",
 				},
 			],
 		},
@@ -785,7 +785,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/pre",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/pre",
 				},
 			],
 		},
@@ -809,7 +809,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/blockquote",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/blockquote",
 				},
 			],
 		},
@@ -856,7 +856,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/ol",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/ol",
 				},
 			],
 		},
@@ -877,7 +877,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/ul",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/ul",
 				},
 			],
 		},
@@ -906,7 +906,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/li",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/li",
 				},
 			],
 		},
@@ -921,7 +921,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/dl",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/dl",
 				},
 			],
 		},
@@ -936,7 +936,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/dt",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/dt",
 				},
 			],
 		},
@@ -957,7 +957,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/dd",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/dd",
 				},
 			],
 		},
@@ -972,7 +972,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/figure",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/figure",
 				},
 			],
 		},
@@ -987,7 +987,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/figcaption",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/figcaption",
 				},
 			],
 		},
@@ -1002,7 +1002,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/main",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/main",
 				},
 			],
 		},
@@ -1017,7 +1017,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/div",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/div",
 				},
 			],
 		},
@@ -1095,7 +1095,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/a",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/a",
 				},
 			],
 		},
@@ -1110,7 +1110,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/em",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/em",
 				},
 			],
 		},
@@ -1125,7 +1125,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/strong",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/strong",
 				},
 			],
 		},
@@ -1140,7 +1140,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/small",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/small",
 				},
 			],
 		},
@@ -1155,7 +1155,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/s",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/s",
 				},
 			],
 		},
@@ -1170,7 +1170,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/cite",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/cite",
 				},
 			],
 		},
@@ -1194,7 +1194,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/q",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/q",
 				},
 			],
 		},
@@ -1209,7 +1209,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/dfn",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/dfn",
 				},
 			],
 		},
@@ -1224,7 +1224,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/abbr",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/abbr",
 				},
 			],
 		},
@@ -1239,7 +1239,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/ruby",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/ruby",
 				},
 			],
 		},
@@ -1254,7 +1254,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/rb",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/rb",
 				},
 			],
 		},
@@ -1269,7 +1269,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/rt",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/rt",
 				},
 			],
 		},
@@ -1284,7 +1284,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/rp",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/rp",
 				},
 			],
 		},
@@ -1308,7 +1308,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/time",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/time",
 				},
 			],
 		},
@@ -1323,7 +1323,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/code",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/code",
 				},
 			],
 		},
@@ -1338,7 +1338,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/var",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/var",
 				},
 			],
 		},
@@ -1353,7 +1353,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/samp",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/samp",
 				},
 			],
 		},
@@ -1368,7 +1368,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/kbd",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/kbd",
 				},
 			],
 		},
@@ -1382,7 +1382,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/sub",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/sub",
 				},
 			],
 		},
@@ -1396,7 +1396,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/sup",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/sup",
 				},
 			],
 		},
@@ -1411,7 +1411,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/i",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/i",
 				},
 			],
 		},
@@ -1426,7 +1426,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/b",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/b",
 				},
 			],
 		},
@@ -1441,7 +1441,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/u",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/u",
 				},
 			],
 		},
@@ -1456,7 +1456,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/mark",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/mark",
 				},
 			],
 		},
@@ -1471,7 +1471,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/bdi",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/bdi",
 				},
 			],
 		},
@@ -1492,7 +1492,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/bdo",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/bdo",
 				},
 			],
 		},
@@ -1507,7 +1507,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/span",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/span",
 				},
 			],
 		},
@@ -1528,7 +1528,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/br",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/br",
 				},
 			],
 		},
@@ -1543,7 +1543,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/wbr",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/wbr",
 				},
 			],
 		},
@@ -1569,7 +1569,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/ins",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/ins",
 				},
 			],
 		},
@@ -1601,7 +1601,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/del",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/del",
 				},
 			],
 		},
@@ -1616,7 +1616,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/picture",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/picture",
 				},
 			],
 		},
@@ -1746,7 +1746,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/img",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/img",
 				},
 			],
 		},
@@ -1854,7 +1854,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/iframe",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/iframe",
 				},
 			],
 		},
@@ -1902,7 +1902,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/embed",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/embed",
 				},
 			],
 		},
@@ -2023,7 +2023,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/object",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/object",
 				},
 			],
 		},
@@ -2064,7 +2064,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/param",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/param",
 				},
 			],
 		},
@@ -2124,7 +2124,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/video",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/video",
 				},
 			],
 		},
@@ -2204,7 +2204,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/audio",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/audio",
 				},
 			],
 		},
@@ -2252,7 +2252,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/source",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/source",
 				},
 			],
 		},
@@ -2311,7 +2311,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/track",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/track",
 				},
 			],
 		},
@@ -2335,7 +2335,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/map",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/map",
 				},
 			],
 		},
@@ -2389,7 +2389,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/area",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/area",
 				},
 			],
 		},
@@ -2413,7 +2413,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/table",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/table",
 				},
 			],
 		},
@@ -2434,7 +2434,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/caption",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/caption",
 				},
 			],
 		},
@@ -2458,7 +2458,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/colgroup",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/colgroup",
 				},
 			],
 		},
@@ -2483,7 +2483,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/col",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/col",
 				},
 			],
 		},
@@ -2504,7 +2504,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/tbody",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/tbody",
 				},
 			],
 		},
@@ -2525,7 +2525,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/thead",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/thead",
 				},
 			],
 		},
@@ -2546,7 +2546,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/tfoot",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/tfoot",
 				},
 			],
 		},
@@ -2566,7 +2566,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/tr",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/tr",
 				},
 			],
 		},
@@ -2610,7 +2610,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/td",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/td",
 				},
 			],
 		},
@@ -2664,7 +2664,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/th",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/th",
 				},
 			],
 		},
@@ -2759,7 +2759,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/form",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/form",
 				},
 			],
 		},
@@ -2791,7 +2791,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/label",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/label",
 				},
 			],
 		},
@@ -2916,7 +2916,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/input",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/input",
 				},
 			],
 		},
@@ -3031,7 +3031,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/button",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/button",
 				},
 			],
 		},
@@ -3116,7 +3116,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/select",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/select",
 				},
 			],
 		},
@@ -3131,7 +3131,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/datalist",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/datalist",
 				},
 			],
 		},
@@ -3164,7 +3164,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/optgroup",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/optgroup",
 				},
 			],
 		},
@@ -3214,7 +3214,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/option",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/option",
 				},
 			],
 		},
@@ -3356,7 +3356,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/textarea",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/textarea",
 				},
 			],
 		},
@@ -3396,7 +3396,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/output",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/output",
 				},
 			],
 		},
@@ -3428,7 +3428,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/progress",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/progress",
 				},
 			],
 		},
@@ -3497,7 +3497,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/meter",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/meter",
 				},
 			],
 		},
@@ -3538,7 +3538,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/fieldset",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/fieldset",
 				},
 			],
 		},
@@ -3553,7 +3553,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/legend",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/legend",
 				},
 			],
 		},
@@ -3578,7 +3578,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/details",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/details",
 				},
 			],
 		},
@@ -3593,7 +3593,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/summary",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/summary",
 				},
 			],
 		},
@@ -3614,7 +3614,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/dialog",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/dialog",
 				},
 			],
 		},
@@ -3704,7 +3704,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/script",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/script",
 				},
 			],
 		},
@@ -3719,7 +3719,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/noscript",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/noscript",
 				},
 			],
 		},
@@ -3734,7 +3734,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/template",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/template",
 				},
 			],
 		},
@@ -3771,7 +3771,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/canvas",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/canvas",
 				},
 			],
 		},
@@ -3795,7 +3795,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/slot",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/slot",
 				},
 			],
 		},
@@ -3819,7 +3819,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/data",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/data",
 				},
 			],
 		},
@@ -3834,7 +3834,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/hgroup",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/hgroup",
 				},
 			],
 		},
@@ -3849,7 +3849,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Element/menu",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Element/menu",
 				},
 			],
 		},
@@ -3865,7 +3865,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/accesskey",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/accesskey",
 				},
 			],
 		},
@@ -3879,7 +3879,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/autocapitalize",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/autocapitalize",
 				},
 			],
 		},
@@ -3893,7 +3893,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/class",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/class",
 				},
 			],
 		},
@@ -3907,7 +3907,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/contenteditable",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/contenteditable",
 				},
 			],
 		},
@@ -3930,7 +3930,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/dir",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/dir",
 				},
 			],
 		},
@@ -3945,7 +3945,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/draggable",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/draggable",
 				},
 			],
 		},
@@ -3967,7 +3967,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts",
 				},
 			],
 		},
@@ -3982,7 +3982,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/hidden",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/hidden",
 				},
 			],
 		},
@@ -3996,7 +3996,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/id",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/id",
 				},
 			],
 		},
@@ -4010,7 +4010,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/inputmode",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/inputmode",
 				},
 			],
 		},
@@ -4024,7 +4024,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/is",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/is",
 				},
 			],
 		},
@@ -4078,7 +4078,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang",
 				},
 			],
 		},
@@ -4092,7 +4092,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/part",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/part",
 				},
 			],
 		},
@@ -4110,7 +4110,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/slot",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/slot",
 				},
 			],
 		},
@@ -4125,7 +4125,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/spellcheck",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/spellcheck",
 				},
 			],
 		},
@@ -4139,7 +4139,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/style",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/style",
 				},
 			],
 		},
@@ -4153,7 +4153,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/tabindex",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/tabindex",
 				},
 			],
 		},
@@ -4167,7 +4167,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/title",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/title",
 				},
 			],
 		},
@@ -4182,7 +4182,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "MDN Reference",
-					"url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/translate",
+					"url": "HTTPS://developer.mozilla.org/docs/Web/HTML/Global_attributes/translate",
 				},
 			],
 		},
@@ -4689,7 +4689,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-activedescendant",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-activedescendant",
 				},
 			],
 			"description": {
@@ -4704,7 +4704,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-atomic",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-atomic",
 				},
 			],
 			"description": {
@@ -4719,7 +4719,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-autocomplete",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-autocomplete",
 				},
 			],
 			"description": {
@@ -4734,7 +4734,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-busy",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-busy",
 				},
 			],
 			"description": {
@@ -4749,7 +4749,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-checked",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-checked",
 				},
 			],
 			"description": {
@@ -4763,7 +4763,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colcount",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-colcount",
 				},
 			],
 			"description": {
@@ -4777,7 +4777,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colindex",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-colindex",
 				},
 			],
 			"description": {
@@ -4791,7 +4791,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colspan",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-colspan",
 				},
 			],
 			"description": {
@@ -4805,7 +4805,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-controls",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-controls",
 				},
 			],
 			"description": {
@@ -4820,7 +4820,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-current",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-current",
 				},
 			],
 			"description": {
@@ -4834,7 +4834,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-describedby",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-describedby",
 				},
 			],
 			"description": {
@@ -4849,7 +4849,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-disabled",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-disabled",
 				},
 			],
 			"description": {
@@ -4864,7 +4864,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-dropeffect",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-dropeffect",
 				},
 			],
 			"description": {
@@ -4878,7 +4878,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-errormessage",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-errormessage",
 				},
 			],
 			"description": {
@@ -4893,7 +4893,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-expanded",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-expanded",
 				},
 			],
 			"description": {
@@ -4907,7 +4907,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-flowto",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-flowto",
 				},
 			],
 			"description": {
@@ -4922,7 +4922,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-grabbed",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-grabbed",
 				},
 			],
 			"description": {
@@ -4937,7 +4937,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-haspopup",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-haspopup",
 				},
 			],
 			"description": {
@@ -4952,7 +4952,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-hidden",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-hidden",
 				},
 			],
 			"description": {
@@ -4967,7 +4967,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-invalid",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-invalid",
 				},
 			],
 			"description": {
@@ -4981,7 +4981,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-label",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-label",
 				},
 			],
 			"description": {
@@ -4995,7 +4995,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-labelledby",
 				},
 			],
 			"description": {
@@ -5009,7 +5009,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-level",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-level",
 				},
 			],
 			"description": {
@@ -5024,7 +5024,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-live",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-live",
 				},
 			],
 			"description": {
@@ -5039,7 +5039,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-modal",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-modal",
 				},
 			],
 			"description": {
@@ -5054,7 +5054,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-multiline",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-multiline",
 				},
 			],
 			"description": {
@@ -5069,7 +5069,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-multiselectable",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-multiselectable",
 				},
 			],
 			"description": {
@@ -5084,7 +5084,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-orientation",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-orientation",
 				},
 			],
 			"description": {
@@ -5098,7 +5098,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-owns",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-owns",
 				},
 			],
 			"description": {
@@ -5112,7 +5112,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-placeholder",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-placeholder",
 				},
 			],
 			"description": {
@@ -5126,7 +5126,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-posinset",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-posinset",
 				},
 			],
 			"description": {
@@ -5141,7 +5141,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-pressed",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-pressed",
 				},
 			],
 			"description": {
@@ -5156,7 +5156,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-readonly",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-readonly",
 				},
 			],
 			"description": {
@@ -5171,7 +5171,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-relevant",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-relevant",
 				},
 			],
 			"description": {
@@ -5186,7 +5186,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-required",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-required",
 				},
 			],
 			"description": {
@@ -5200,7 +5200,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-roledescription",
 				},
 			],
 			"description": {
@@ -5214,7 +5214,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowcount",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-rowcount",
 				},
 			],
 			"description": {
@@ -5228,7 +5228,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-rowindex",
 				},
 			],
 			"description": {
@@ -5242,7 +5242,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowspan",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-rowspan",
 				},
 			],
 			"description": {
@@ -5257,7 +5257,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-selected",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-selected",
 				},
 			],
 			"description": {
@@ -5271,7 +5271,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-setsize",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-setsize",
 				},
 			],
 			"description": {
@@ -5286,7 +5286,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-sort",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-sort",
 				},
 			],
 			"description": {
@@ -5300,7 +5300,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuemax",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-valuemax",
 				},
 			],
 			"description": {
@@ -5314,7 +5314,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuemin",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-valuemin",
 				},
 			],
 			"description": {
@@ -5328,7 +5328,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuenow",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-valuenow",
 				},
 			],
 			"description": {
@@ -5342,7 +5342,7 @@ export const htmlData: HTMLDataV1 = {
 			"references": [
 				{
 					"name": "WAI-ARIA Reference",
-					"url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuetext",
+					"url": "HTTPS://www.w3.org/TR/wai-aria-1.1/#aria-valuetext",
 				},
 			],
 			"description": {
